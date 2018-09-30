@@ -13,7 +13,7 @@
             <!-- END SIDEBAR TOGGLER BUTTON -->
 
             <li class="nav-item active open">
-                <a href="" class="nav-link">
+                <a href="{{url('dashboard')}}" class="nav-link">
                     <i class="fa fa-dashboard"></i>
                     <span class="title">Dashboard</span>
 
@@ -29,35 +29,36 @@
                         287                                
                     </span>
 
-                    <span class="arrow"></span> </a>
+                    <span class="arrow"></span> 
+                </a>
 
                 <ul class="sub-menu">
                     <li class="nav-item ">
-                        <a href="permit-request/pending" class="nav-link ">
+                        <a href="{{url('dashboard/permit-request/pending')}}" class="nav-link ">
                             <i class="fa fa-exclamation-circle"></i>
                             <span class="title">Pending Permits</span>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="permit-request/approved" class="nav-link ">
+                        <a href="{{url('dashboard/permit-request/approved')}}" class="nav-link ">
                             <i class="fa fa-check-circle"></i>
                             <span class="title">Approved Permits</span>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="permit-request/expired" class="nav-link ">
+                        <a href="{{url('dashboard/permit-request/expired')}}" class="nav-link ">
                             <i class="fa fa-exclamation-circle"></i>
                             <span class="title">Expired Permits</span>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="permit-request/cancelled" class="nav-link ">
+                        <a href="{{url('dashboard/permit-request/cancelled')}}" class="nav-link ">
                             <i class="fa fa-times-circle"></i>
                             <span class="title">Cancelled/Denied </span>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="permit-request/draft" class="nav-link ">
+                        <a href="{{url('dashboard/permit-request/draft')}}" class="nav-link ">
                             <i class="fa fa-refresh"></i>
                             <span class="title">Drafts</span>
                         </a>
@@ -73,7 +74,7 @@
 
                 <ul class="sub-menu">
                     <li class="nav-item ">
-                        <a href="payment-history" class="nav-link ">
+                        <a href="{{route('payments.index')}}" class="nav-link ">
                             <i class="fa fa-history"></i>
                             <span class="title">Payment History</span>
                         </a>
@@ -81,7 +82,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="contact-us" class="nav-link">
+                <a href="{{url('dashboard/contact-us')}}" class="nav-link">
                     <i class="fa fa-envelope"></i>
                     <span class="title">Customer Support</span>
 

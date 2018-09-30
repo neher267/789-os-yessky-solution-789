@@ -2,7 +2,7 @@
     <div class="pod-dash-button-area">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 blue2 btn blue-madison permit-type-selection pod-dash-stat-with-icon" href="overfly/request" data-type="#permit-overfly-selection-area">
+                <a class="dashboard-stat dashboard-stat-v2 blue2 btn blue-madison permit-type-selection pod-dash-stat-with-icon" href="{{route('overfly-requests.create')}}" data-type="#permit-overfly-selection-area">
                     <div class="details pull-left">
                         <div class="number">
                             Request Overfly Permit
@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 green2 btn green-meadow permit-type-selection pod-dash-stat-with-icon" href="landing/request" data-type="#permit-landing-selection-area">
+                <a class="dashboard-stat dashboard-stat-v2 green2 btn green-meadow permit-type-selection pod-dash-stat-with-icon" href="{{route('landing-requests.create')}}" data-type="#permit-landing-selection-area">
                     <div class="details pull-left">
                         <div class="number">
                             Request Landing Permit

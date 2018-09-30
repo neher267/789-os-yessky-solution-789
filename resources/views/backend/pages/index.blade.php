@@ -6,10 +6,6 @@
 
     @include('backend.partials._search')
     <!-- BEGIN CONTENT -->
-    <!--<div class="page-content-wrapper">-->
-
-    <!-- BEGIN CONTENT BODY -->
-    <!--    <div class="page-content">-->
     <h1 class="page-title">Customer Portal</h1>
     <br>
     

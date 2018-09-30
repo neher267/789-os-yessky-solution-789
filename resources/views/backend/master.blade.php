@@ -14,22 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="shortcut icon" href="favicons/favicon.ico?v=1.02">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="favicons/favicon.ico?v=1.02">
-    <link rel="icon" type="image/png" sizes="196x196" href="favicons/favicon-192.png?v=1.02">
-    <link rel="icon" type="image/png" sizes="160x160" href="favicons/favicon-160.png?v=1.02">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96.png?v=1.02">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicons/favicon-64.png?v=1.02">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32.png?v=1.02">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16.png?v=1.02">
-    <link rel="apple-touch-icon" href="favicons/favicon-57.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicons/favicon-114.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicons/favicon-72.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicons/favicon-144.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicons/favicon-60.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicons/favicon-120.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicons/favicon-76.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicons/favicon-152.png?v=1.02">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/favicon-180.png?v=1.02">
+    
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="favicons/favicon-144.png?v=1.02">
     <meta name="msapplication-config" content="favicons/browserconfig.xml">
@@ -43,7 +28,7 @@
 
     <link rel="manifest" href="/manifest.json">
 
-    <link href="backend/clint/assets/ed36dc48/css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset('backend/clint/assets/ed36dc48/css/bootstrap.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet">
@@ -55,8 +40,8 @@
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/layouts/layout/css/themes/default.min.css" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet">
-    <link href="backend/clint/css/custom.css?v=1.42a" rel="stylesheet">
-    <link href="backend/clint/assets/4a47db2a/css/common.css" rel="stylesheet">
+    <link href="{{asset('backend/clint/css/custom.css?v=1.42a')}}" rel="stylesheet">
+    <link href="{{asset('backend/clint/assets/4a47db2a/css/common.css')}}" rel="stylesheet">
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -108,9 +93,9 @@
         <!-- END FOOTER -->
     </div>
 
-    <script src="backend/clint/assets/7bbf23c/jquery.js"></script>
-    <script src="backend/clint/assets/ed36dc48/js/bootstrap.js"></script>
-    <script src="backend/clint/assets/f6ed14de/yii.js"></script>
+    <script src="{{asset('backend/clint/assets/7bbf23c/jquery.js')}}"></script>
+    <script src="{{asset('backend/clint/assets/ed36dc48/js/bootstrap.js')}}"></script>
+    <script src="{{asset('backend/clint/assets/f6ed14de/yii.js')}}"></script>
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/js.cookie.min.js"></script>
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/jquery.blockui.min.js"></script>
@@ -124,11 +109,11 @@
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/pages/scripts/ui-sweetalert.min.js"></script>
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
     <script src="https://caab.pod.aero/shared/js/session-timeout.js?v=1.42a"></script>
-    <script src="backend/clint/js/main.js?v=1.42a"></script>
+    <script src="{{asset('backend/clint/js/main.js?v=1.42a')}}"></script>
     <script src="https://caab.pod.aero/shared/js/common.js?v=1.42a"></script>
-    <script src="backend/clint/assets/4a47db2a/js/main.js"></script>
-    <script src="backend/clint/assets/f6ed14de/yii.activeForm.js"></script>
-    <script src="backend/clint/assets/48458762/js/eula-confirmation.js"></script>
+    <script src="{{asset('backend/clint/assets/4a47db2a/js/main.js')}}"></script>
+    <script src="{{asset('backend/clint/assets/f6ed14de/yii.activeForm.js')}}"></script>
+    <script src="{{asset('backend/clint/assets/48458762/js/eula-confirmation.js')}}"></script>
     <script>
         var separator = '<span class="pod-time-separator"></span>';
         var utc = new Date(Date.UTC(2018, 9, 28, 7, 5, 30));
@@ -168,7 +153,7 @@
             jQuery('#w0').yiiActiveForm([], []);
         });
     </script>
-    <script src="frontend/app.js"></script>
+    <script src="{{asset('frontend/app.js')}}"></script>
 </body>
 
 </html>

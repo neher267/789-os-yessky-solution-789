@@ -7,14 +7,14 @@
                 <div class="timer-area">
                     <span>UTC | </span>
                     <span class="utc-hour">-</span>
-                    <img src="backend/clint/images/timer-separator.gif" class="timer-separator" style="width:3px; display:none;" />
+                    <img src="" class="timer-separator" style="width:3px; display:none;" />
                     <span class="utc-minute"></span>
                     <!--                    <span class="utc-second"></span>-->
                 </div>
                 <div class="timer-area">
                     <span>BST | </span>
                     <span class="bst-hour">-</span>
-                    <img src="backend/clint/images/timer-separator.gif" class="timer-separator" style="width:3px; display:none;" />
+                    <img src="{{asset('backend/clint/images/timer-separator.gif')}}" class="timer-separator" style="width:3px; display:none;" />
                     <span class="bst-minute"></span>
                     <!--                    <span class="bst-second"></span>-->
                 </div>
@@ -56,7 +56,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="profile">
+                            <a href="{{route('profile.show', 1)}}">
                                 <i class="fa fa-user"></i> Account Management
                             </a>
                         </li>

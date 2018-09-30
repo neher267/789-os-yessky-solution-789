@@ -9,7 +9,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	//return view('backend.pages.index');
-    	return view('backend.pages.status');
+    	return view('backend.pages.index');    	
     }
+    
+    public function contact()
+    {
+    	return view('backend.pages.contact-us');
+    }
+
+    public function request_status($status)
+    {
+    	return view('backend.pages.status');    	
+    }    
 }

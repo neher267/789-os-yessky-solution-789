@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard'], function() {
 	Route::get('/', 'HomeController@index');
+	Route::get('contact-us', 'HomeController@contact');
+	Route::get('permit-request/{status}', 'HomeController@request_status');
+	Route::resource('payments', 'PaymentController');
+	Route::resource('landing-requests', 'LandingRequestController');
+	Route::resource('overfly-requests', 'OverFlyRequestController');
+	Route::resource('profile', 'ProfileController');
 
 
 
