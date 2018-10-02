@@ -9,7 +9,7 @@
     </div>
     <div class="portlet-body">
         <div class="permit-list-table table-responsive">
-            <table class="table table-striped table-bordered table-hover text-center">
+            <table class="datatable table table-striped table-bordered table-hover text-center">
                 <thead>
                     <tr class="double-border">
                         <th>OPS Date</th>

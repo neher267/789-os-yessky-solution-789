@@ -40,6 +40,13 @@
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/layouts/layout/css/themes/default.min.css" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet">
     <link href="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet">
+
+    <!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <!-- end datatable -->
+
+
+
     <link href="{{asset('backend/clint/css/custom.css?v=1.42a')}}" rel="stylesheet">
     <link href="{{asset('backend/clint/assets/4a47db2a/css/common.css')}}" rel="stylesheet">
 </head>
@@ -114,6 +121,22 @@
     <script src="{{asset('backend/clint/assets/4a47db2a/js/main.js')}}"></script>
     <script src="{{asset('backend/clint/assets/f6ed14de/yii.activeForm.js')}}"></script>
     <script src="{{asset('backend/clint/assets/48458762/js/eula-confirmation.js')}}"></script>
+
+    <!-- datatable -->
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.datatable').DataTable( {
+                "ordering": false,
+            } );
+        } );
+    </script>
+    <!-- end datatable -->
+
+
     <script>
         var separator = '<span class="pod-time-separator"></span>';
         var utc = new Date(Date.UTC(2018, 9, 28, 7, 5, 30));

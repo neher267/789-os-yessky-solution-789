@@ -81,6 +81,38 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Users</span>
+
+                    <span class="arrow"></span> </a>
+
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{route('register')}}" class="nav-link ">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Add User</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="{{route('users.customers')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Customers</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="{{route('users.admens')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Admins</span>
+                        </a>
+                    </li>                    
+                </ul>
+            </li>
+
             <li class="nav-item">
                 <a href="{{url('dashboard/contact-us')}}" class="nav-link">
                     <i class="fa fa-envelope"></i>

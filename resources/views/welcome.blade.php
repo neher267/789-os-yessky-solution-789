@@ -90,8 +90,9 @@
                         </div>
                     </div>
 
-                    <form id="w0" class="login-form" action="frontend/auth/" method="post">
-                        <input type="hidden" name="_csrf-auth" value="MJM1xMhSubjqssDMfJrLEGqg_mln_ocrVOZd5egzM2ZKymChojvWjYb8j4A2zLIoPOKuUC2m5GAZsjGBvAtbKw==">
+                    <form class="login-form" action="{{url('login')}}" method="post">
+                        
+                        {{ csrf_field() }}
 
                         <div class="row">
                             <div class="col-xs-6">
@@ -100,7 +101,7 @@
                                     <label class="control-label visible-ie8 visible-ie9">Username</label>
                                     <div class="input-icon">
                                         <!--                <i class="fa fa-user"></i>-->
-                                        <input type="email" id="loginform-username" class="form-control placeholder-no-fix listen-enter trans-background" name="LoginForm[username]" placeholder="Email" required autofocus> </div>
+                                        <input type="email" class="form-control placeholder-no-fix listen-enter trans-background" name="email" placeholder="Email" required autofocus> </div>
                                     <div class="help-block help-block-error">
                                         <!--                -->
                                     </div>
@@ -111,7 +112,7 @@
                                     <label class="control-label visible-ie8 visible-ie9">Password</label>
                                     <div class="input-icon">
                                         <!--                <i class="fa fa-lock"></i>-->
-                                        <input type="password" id="loginform-password" class="form-control placeholder-no-fix listen-enter trans-background" name="LoginForm[password]" placeholder="Password" required> </div>
+                                        <input type="password" class="form-control placeholder-no-fix listen-enter trans-background" name="password" placeholder="Password" required> </div>
                                     <div class="help-block help-block-error">
                                         <!--                -->
                                     </div>

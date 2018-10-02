@@ -4,82 +4,74 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
+use Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    private $image_path = "images/Profile";
+
+    public function show()
     {
-        //
+        $user = Auth::user();
+        return view('backend.pages.users.profile', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function edit()
     {
-        //
+        $result = Auth::user();
+        return view('layouts.backend2.pages.users.edit-profile', compact('result'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function settings()
     {
-        //
+        return view('layouts.backend2.pages.users.settings');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function changePassword(Request $request)
     {
-        return view('backend.pages.user-profile');  
+         $request->validate([
+            'c_password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
+          ]);
+
+        if($user = Auth::user()) {
+            if(Hash::check($request->c_password, $user->password)) {
+                $user->password = Hash::make($request->password);
+                $user->save();
+                return redirect('dashboard')->withSuccess('Password Changed!');
+            }
+        }
+
+        return back()->withError('Your Current Password is not valid!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function update(Request $request, User $user)
     {
-        //
+        $data = $user;
+        $data->name = $request->name;
+        $data->address = $request->address;
+        $data->about = $request->about;
+        
+        if(!empty($request->image)) 
+        {
+            if(!empty($user->image))
+            {
+                unlink($user->image);            
+            }
+            
+            $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:400']);
+            $imageName = time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path($this->image_path), $imageName);
+            $data->image = $this->image_path.'/'.$imageName;        
+        }     
+
+        $data->save();
+
+        return redirect('dashboard/profile');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

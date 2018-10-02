@@ -27,17 +27,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard/users';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Get a validator for an incoming registration request.
@@ -51,6 +51,10 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string|max:30',
+            'primary_contact' => 'required|string|max:15',
+            'secondary_contact' => 'string|max:15',
+            'aditional_notes' => 'string',
         ]);
     }
 
@@ -65,6 +69,10 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => $data['role'],
+            'primary_contact' => $data['primary_contact'],
+            'secondary_contact' => $data['secondary_contact'],
+            'aditional_notes' => $data['aditional_notes'],
             'password' => bcrypt($data['password']),
         ]);
     }
