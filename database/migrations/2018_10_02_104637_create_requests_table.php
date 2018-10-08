@@ -15,7 +15,8 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type', 50);//overfly = 0; landing = 1
+            $table->integer('user_id')->unsigned();
+            $table->string('type', 50); //Vverfly; Landing
             $table->string('operator');
             $table->text('billing_add');
             $table->string('aircraft_reg');
@@ -28,8 +29,8 @@ class CreateRequestsTable extends Migration
             $table->string('goods_type');
             $table->string('notes')->nullable();
             $table->string('flight_rules');
-            $table->string('sector');
-            $table->string('flight_level');
+            $table->string('sector')->nullable();
+            $table->string('flight_level')->nullable();
             $table->decimal('crew_count');
             $table->decimal('pax_count');
             $table->string('depar_date');
@@ -37,8 +38,10 @@ class CreateRequestsTable extends Migration
             $table->string('etd_utc');
             $table->string('eta_utc');
             $table->string('aerodrome_of_departure');
-            $table->string('eta_utc');
             $table->string('aerodrome_of_estination');
+            $table->string('fir_in');
+            $table->string('fir_out');
+            $table->string('status', 30);
             $table->timestamps();
         });
     }

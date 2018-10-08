@@ -5,10 +5,10 @@
 <div class="page-content">
 
     <!-- BEGIN CONTENT -->
-    <h1 class="page-title">Approved Permit Requests</h1>
+    <h1 class="page-title" style="text-transform: capitalize;">{{$status}} Permit Requests</h1>
     <br>
 
-    <div id="permit-overfly-selection-area" style="display:none;">
+    <!-- <div id="permit-overfly-selection-area" style="display:none;">
         <div class="pod-dash-button-area">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -33,9 +33,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div id="permit-landing-selection-area" style="display:none;">
+    <!-- <div id="permit-landing-selection-area" style="display:none;">
         <div class="pod-dash-button-area">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="clearfix"></div>
 

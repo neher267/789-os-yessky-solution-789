@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['auth']], function() {
 	Route::get('/', 'HomeController@index');
 	Route::get('contact-us', 'HomeController@contact');
