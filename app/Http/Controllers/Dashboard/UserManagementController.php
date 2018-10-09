@@ -8,16 +8,16 @@ use App\User;
 
 class UserManagementController extends Controller
 {
- //    public function __construct()
- //    {
- //        $this->middleware('admin');
-	// }
+    public function __construct()
+    {
+        $this->middleware('admen');
+	}
 
     public function customers()
     {
     	$name = 'users';
     	$type = "Customers";
-    	$results = User::where('role', 2)->get();
+    	$results = User::where('role', 'customer')->get();
     	return view('backend.pages.users.index', compact('results', 'type', 'name'));
     }
 
@@ -25,7 +25,7 @@ class UserManagementController extends Controller
     {
     	$name = 'users';
     	$type = "Admens";
-    	$results = User::where('role', 1)->get();
+    	$results = User::where('role', 'admen')->get();
     	return view('backend.pages.users.index', compact('results', 'type', 'name'));
     }
 

@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
             $view->with('pendings', FlightRequest::where('status', 'pending')->latest()->get());   
-        });
+        });        
     }
 
     /**

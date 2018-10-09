@@ -1,16 +1,14 @@
 @extends('backend.master') @section('content')
 <!-- BEGIN CONTENT BODY -->
 <div class="page-content">
+    <ul class="breadcrumb">
+        <li><a href="">Home</a></li>
+        <li class="active">Step 1</li>
+    </ul>
 
-    @include('backend.partials._search')
-    <!-- BEGIN CONTENT -->
-    <!-- BEGIN CONTENT BODY -->
-    <h1 class="page-title">Permit Request for Overfly</h1>
-    <br>
-
+    
     <div class="form-wizard">
         <div class="form-body">
-
             <ul class="nav nav-pills nav-justified steps pod-steps">
 
                 <li class="active">
@@ -38,12 +36,19 @@
                 </li>
 
             </ul>
-
             <div id="1bar" class="progress progress-striped active" role="progressbar">
-
-                <div class="progress-bar progress-bar-warning" style="width:33%"> </div>
-
+                <div class="progress-bar progress-bar-warning" style="width:33%"></div>
             </div>
+
+            <h1 class="page-title" style="text-align: center;">Permit Request for Overfly</h1>
+            <div style="width: 100%; text-align: center;">
+                @if (session('success'))
+                    <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+            <hr>
 
             <div>
                 <form action="{{route('overfly-requests.store')}}" method="post">

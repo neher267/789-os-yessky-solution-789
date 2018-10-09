@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Request as FlightRequest;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,12 @@ class HomeController extends Controller
 
     public function request_status($status)
     {
-        $results = FlightRequest::where('status', $status)->latest()->get();
+        if(Auth::user()->role == 'admen'){
+            $results = FlightRequest::where('status', $status)->latest()->get();
+        } else {
+            $results = FlightRequest::where('status', $status)
+                       ->where('user_id', Auth::user()->id)->latest()->get();
+        }       
         
         return view('backend.pages.status', compact('results', 'status'));    	
     }    

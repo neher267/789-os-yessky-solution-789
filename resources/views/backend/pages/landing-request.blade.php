@@ -2,28 +2,22 @@
 
 <!-- BEGIN CONTENT BODY -->
 <div class="page-content">
-
-    @include('backend.partials._search')
-    <!-- BEGIN CONTENT -->
-    <!-- BEGIN CONTENT BODY -->
     <ul class="breadcrumb">
         <li><a href="">Home</a></li>
         <li class="active">Step 1</li>
     </ul>
-
-    <div class="landing-create-step-1">
-        <h1 class="page-title">Permit Request for Landing</h1>
-
+    
+    <div class="landing-create-step-1">            
         <div class="form-wizard">
             <div class="form-body">
 
                 <ul class="nav nav-pills nav-justified steps pod-steps">
-
                     <li class="active">
                         <a class="step active" style="cursor: default;">
                             <span class="number"> 1 </span>
                             <span class="desc">
-                    <i class="fa fa-check"></i> Flight Info                </span>
+                                <i class="fa fa-check"></i> Flight Info                
+                            </span>
                         </a>
                     </li>
 
@@ -31,7 +25,8 @@
                         <a class="step inactive" style="cursor: default;">
                             <span class="number"> 2 </span>
                             <span class="desc">
-                    <i class="fa fa-check"></i> Crew/PAX Info                </span>
+                                <i class="fa fa-check"></i> Crew/PAX Info                
+                            </span>
                         </a>
                     </li>
 
@@ -39,7 +34,8 @@
                         <a class="step inactive" style="cursor: default;">
                             <span class="number"> 3 </span>
                             <span class="desc">
-                    <i class="fa fa-check"></i> Documents                </span>
+                                <i class="fa fa-check"></i> Documents                
+                            </span>
                         </a>
                     </li>
 
@@ -47,7 +43,8 @@
                         <a class="step inactive" style="cursor: default;">
                             <span class="number"> 4 </span>
                             <span class="desc">
-                    <i class="fa fa-check"></i> Payment                </span>
+                                <i class="fa fa-check"></i> Payment                
+                            </span>
                         </a>
                     </li>
 
@@ -55,17 +52,26 @@
                         <a class="step inactive" style="cursor: default;">
                             <span class="number"> 5 </span>
                             <span class="desc">
-                    <i class="fa fa-check"></i> Complete                </span>
+                                <i class="fa fa-check"></i> Complete                
+                            </span>
                         </a>
                     </li>
 
                 </ul>
 
                 <div id="bar" class="progress progress-striped active" role="progressbar">
-
-                    <div class="progress-bar progress-bar-warning" style="width:20%"> </div>
-
+                    <div class="progress-bar progress-bar-warning" style="width:20%"></div>
                 </div>
+
+                <h1 class="page-title" style="text-align: center;">Permit Request for Landing</h1>
+                <div style="width: 100%; text-align: center;">
+                    @if (session('success'))
+                        <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </div>
+                <hr>
 
                 <div>
                     <form id="req-step-1-form" action="{{route('landing-requests.store')}}" method="post" enctype="multipart/form-data">

@@ -3,32 +3,26 @@
     <div class="page-sidebar navbar-collapse collapse">
         <!-- BEGIN SIDEBAR MENU -->
         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
             <li class="sidebar-toggler-wrapper hide">
                 <div class="sidebar-toggler">
                     <span></span>
                 </div>
             </li>
-            <!-- END SIDEBAR TOGGLER BUTTON -->
-
             <li class="nav-item active open">
                 <a href="{{url('dashboard')}}" class="nav-link">
                     <i class="fa fa-dashboard"></i>
                     <span class="title">Dashboard</span>
-
-                    <span class="selected"></span> </a>
-
+                    <span class="selected"></span></a>
             </li>
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-plane"></i>
                     <span class="title">Flights Menu</span>
-
+                    @if(Auth::user()->role == 'admen')
                     <span class="badge badge-success2" style="margin-right:20px; margin-top:5px;">
-                        {{$pendings->count()}}                                
+                        {{$pendings->count()}} 
                     </span>
-
+                    @endif 
                     <span class="arrow"></span> 
                 </a>
 
@@ -82,13 +76,13 @@
                 </ul>
             </li>
 
+            @if(Auth::user()->role == 'admen')
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-users"></i>
                     <span class="title">Users</span>
 
-                    <span class="arrow"></span> </a>
-
+                    <span class="arrow"></span> </a>                    
                 <ul class="sub-menu">
                     <li class="nav-item ">
                         <a href="{{route('register')}}" class="nav-link ">
@@ -112,7 +106,9 @@
                     </li>                    
                 </ul>
             </li>
+            @endif
 
+            @if(Auth::user()->role == 'customer')
             <li class="nav-item">
                 <a href="{{url('dashboard/contact-us')}}" class="nav-link">
                     <i class="fa fa-envelope"></i>
@@ -121,6 +117,7 @@
                 </a>
 
             </li>
+            @endif
 
         </ul>
         <!-- END SIDEBAR MENU -->
