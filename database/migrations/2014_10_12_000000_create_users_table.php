@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->default('customer');
+            $table->string('role', 50);
             $table->string('primary_contact');
             $table->string('secondary_contact')->nullable();
             $table->text('aditional_notes')->nullable();

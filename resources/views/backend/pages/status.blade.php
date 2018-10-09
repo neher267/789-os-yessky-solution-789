@@ -5,9 +5,9 @@
 <div class="page-content">
 
     <!-- BEGIN CONTENT -->
-    <h1 class="page-title" style="text-transform: capitalize;">{{$status}} Permit Requests</h1>
-    <br>
-
+    <hr>
+    <h1 class="page-title" style="text-transform: capitalize; text-align: center;">{{$status}} Permit Requests</h1>
+    
     <!-- <div id="permit-overfly-selection-area" style="display:none;">
         <div class="pod-dash-button-area">
             <div class="row">

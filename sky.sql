@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `langing_requests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sky.langing_requests: ~1 rows (approximately)
+-- Dumping data for table sky.langing_requests: ~0 rows (approximately)
 /*!40000 ALTER TABLE `langing_requests` DISABLE KEYS */;
 INSERT INTO `langing_requests` (`id`, `request_id`, `flightPlan`, `ospAgent`, `aocValidity`, `corValidity`, `coaValidity`, `insuranceValidity`, `goingDepDate`, `goingEtdUtc`, `goingDepFrom`, `goingArrDate`, `goingAtaUtc`, `goingArrTo`, `created_at`, `updated_at`) VALUES
 	(1, 2, 'C:\\Users\\Administrator\\AppData\\Local\\Temp\\phpACF9.tmp', '# 10. Advance Aviation Management Ltd', '10/08/2018', '10/09/2018', '10/10/2018', '10/11/2018', '10/09/2018', '02:00', '1', '10/08/2018', '03:00', '1', '2018-10-08 07:31:54', '2018-10-08 07:31:54');
@@ -102,12 +102,12 @@ CREATE TABLE IF NOT EXISTS `requests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sky.requests: ~2 rows (approximately)
+-- Dumping data for table sky.requests: ~3 rows (approximately)
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
 INSERT INTO `requests` (`id`, `user_id`, `type`, `operator`, `billing_add`, `aircraft_reg`, `call_sign`, `trip_ref_no`, `aircraft_type`, `max_weight`, `max_weight_unit`, `purpose`, `goods_type`, `notes`, `flight_rules`, `sector`, `flight_level`, `crew_count`, `pax_count`, `depar_date`, `arri_date`, `etd_utc`, `eta_utc`, `aerodrome_of_departure`, `aerodrome_of_estination`, `fir_in`, `fir_out`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 1, 'Overfly', 'Name of Operator', 'Billing Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 1200.00, 'kgs', '1', '0', '122', 'IFR', 'Sector', 'Flight Leve', 10.00, 200.00, '10/08/2018', '10/08/2018', '03:00', '05:00', '2', '1', 'ATOGA(R472)', 'AGODA(R472)', 'pending', '2018-10-08 06:30:56', '2018-10-08 06:30:56'),
-	(2, 1, 'Landing', 'Operator Name', 'Billing Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 12000.00, 'kgs', 'Cargo Flight', '0', 'No', 'IFR', 'Sector', 'Flight Leve', 10.00, 250.00, '10/09/2018', '10/09/2018', '02:00', '03:00', '1', '1', 'VANTU(R598)', 'TEBID(G463)', 'pending', '2018-10-08 07:31:54', '2018-10-08 07:31:54'),
-	(3, 1, 'Overfly', 'Operator', 'Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 50000.00, 'kgs', 'Ferry Flight', '0', '123', 'IFR', 'Sector', 'Flight Leve', 10.00, 200.00, '10/16/2018', '10/16/2018', '02:00', '03:00', '1', '1', 'IBAPA(B593)', 'CHILA(A599)', 'pending', '2018-10-08 11:20:51', '2018-10-08 11:20:51');
+	(1, 1, 'Overfly', 'Name of Operator', 'Billing Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 1200.00, 'kgs', '1', '0', '122', 'IFR', 'Sector', 'Flight Leve', 10.00, 200.00, '10/08/2018', '10/08/2018', '03:00', '05:00', '2', '1', 'ATOGA(R472)', 'AGODA(R472)', 'approved', '2018-10-08 06:30:56', '2018-10-09 06:24:11'),
+	(2, 1, 'Landing', 'Operator Name', 'Billing Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 12000.00, 'kgs', 'Cargo Flight', '0', 'No', 'IFR', 'Sector', 'Flight Leve', 10.00, 250.00, '10/09/2018', '10/09/2018', '02:00', '03:00', '1', '1', 'VANTU(R598)', 'TEBID(G463)', 'cancelled', '2018-10-08 07:31:54', '2018-10-09 05:53:12'),
+	(3, 1, 'Overfly', 'Operator', 'Address', 'Regis', 'Call Sign', 'rip Reference No', 'Type of Aircraft', 50000.00, 'kgs', 'Ferry Flight', '0', '123', 'IFR', 'Sector', 'Flight Leve', 10.00, 200.00, '10/16/2018', '10/16/2018', '02:00', '03:00', '1', '1', 'IBAPA(B593)', 'CHILA(A599)', 'cancelled', '2018-10-08 11:20:51', '2018-10-09 06:08:48');
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
 
 -- Dumping structure for table sky.users
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer',
+  `role` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer',
   `primary_contact` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `secondary_contact` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `aditional_notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -125,12 +125,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table sky.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `primary_contact`, `secondary_contact`, `aditional_notes`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Neher', 'neher@example.com', '1', '01784255196', '01784255197', 'NA', '$2y$10$oVuaEcNQW5CQDIbsm376LOHUy8LK8SaNfVrbVP70zldCArJIYwzyu', 'YoYcAyWJgjbivaOikCkX9QlWcNxSRFdtpDjqlLmwuaoKRKPgCGkbKU3shELT', '2018-10-02 06:28:32', '2018-10-02 06:28:32');
+	(1, 'Neher', 'neher@example.com', 'admen', '01784255196', '01784255197', 'NA', '$2y$10$oVuaEcNQW5CQDIbsm376LOHUy8LK8SaNfVrbVP70zldCArJIYwzyu', 'SC61PonlQ0KPXP3zrKHfBauwXz6HgOTuja39B7TkxcRigWQuDct3AyjENHNY', '2018-10-02 06:28:32', '2018-10-02 06:28:32'),
+	(2, 'Customer', 'customer@gmail.com', 'customer', '01784255199', NULL, NULL, '$2y$10$8BEmDbRFO6hGUatvJTcVq./yWJF/x5jPA09RK6Yu2UgehOMX.Zw02', NULL, '2018-10-09 06:56:06', '2018-10-09 06:56:06'),
+	(3, 'Customer1', 'customer1@example.com', 'customer', '01784255198', NULL, NULL, '$2y$10$GORpaX37YgoKvXtb5o.4o.kJ37Ob8QYw.s5QZbxGcAgUXjZzJ76MC', NULL, '2018-10-09 07:00:58', '2018-10-09 07:00:58');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

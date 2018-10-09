@@ -21,7 +21,7 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	Route::get('permit-request/{status}', 'HomeController@request_status');
 	Route::resource('payments', 'PaymentController');
 	Route::resource('landing-requests', 'LandingRequestController');
-	Route::resource('overfly-requests', 'OverFlyRequestController');
+	Route::resource('overfly-requests', 'OverFlyRequestController');		
 	Route::get('users/customers', 'UserManagementController@customers')->name('users.customers');
 	Route::get('users/admens', 'UserManagementController@admens')->name('users.admens');
 

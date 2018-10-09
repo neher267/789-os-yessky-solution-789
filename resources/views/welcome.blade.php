@@ -35,13 +35,13 @@
         <div class="row bs-reset">
             <div class="col-md-6 bs-reset mt-login-5-bsfix">
                 <div class="login-bg">
-                    <div style="padding: 20px; background2: rgba(0,0,0,.4);">
+                    <!-- <div style="padding: 20px; background2: rgba(0,0,0,.4);">
 
                         <a href="frontend/auth/">
-                            <img src="https://caab.pod.aero/shared/images/logo/pod_logo_white.svg" alt="logo" class="logo-default login-logo" style="" />
+                            <img src="{{asset('images/sky.png')}}" alt="logo" class="logo-default login-logo" style="" />
                         </a>
                         <div style="clear: both"></div>
-                    </div>
+                    </div> -->
                 </div>                
             </div>
 
@@ -51,8 +51,8 @@
 
                     <!-- BEGIN LOGO -->
                     <div class="logo text-center">
-                        <a href="http://caab.gov.bd" target="_blank">
-                            <img src="https://caab.pod.aero/shared/images/logo/caab_logo.svg" alt="CAAB Logo" class="logo-default " style="width: 275px; margin-bottom: 20px;" />
+                        <a href="#" target="_blank">
+                            <img src="{{asset('images/sky.png')}}" alt="CAAB Logo" class="logo-default " style="width: 275px; margin-bottom: 20px;" />
                         </a>
                     </div>
                     <!-- END LOGO -->
@@ -60,8 +60,8 @@
                     <div class="container2">
                         <div class="row2">
                             <h3 class="Login-sub-title">
-                            <a href="http://caab.gov.bd" target="_blank">
-                                Civil Aviation Authority of Bangladesh
+                            <a href="{{url('/')}}" target="_blank">
+                                Sky Solution (Pvt.) Co. Ltd
                             </a>
                         </h3>
                             <div class="Login-sub-title">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-xs-7 bs-reset">
                             <div class="login-copyright text-right ">
-                                2018 &copy; Aerogon PTE Ltd. </div>
+                                2018 &copy; {{config('app.name')}} (Pvt.) Co. Ltd </div>
                         </div>
                     </div>
                 </div>

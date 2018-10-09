@@ -23,10 +23,10 @@
 
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="">
-                <img src="https://caab.pod.aero/shared/images/logo/pod_logo.svg" alt="logo" class="logo-default" />
+            <a href="{{url('/')}}">
+                <img src="{{asset('images/sky.png')}}" alt="logo" class="logo-default" />
             </a>
-            <div class="menu-toggler sidebar-toggler">
+            <div class="menu-toggler sidebar-toggler" style="padding: 8px">
                 <span></span>
             </div>
         </div>

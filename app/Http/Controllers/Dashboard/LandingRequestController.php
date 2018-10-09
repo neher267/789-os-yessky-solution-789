@@ -122,7 +122,13 @@ class LandingRequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = FlightRequest::find($id);
+
+        if ($data) {
+            $data->status = $request->status;
+            $data->save();            
+        }
+        return back()->withSuccess($request->status.' Success!');
     }
 
     /**

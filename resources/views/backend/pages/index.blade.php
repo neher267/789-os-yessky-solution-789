@@ -6,9 +6,6 @@
 
     @include('backend.partials._search')
     <!-- BEGIN CONTENT -->
-    <h1 class="page-title">Customer Portal</h1>
-    <br>
-    
     @include('backend.partials._requests')
 
     <div id="permit-overfly-selection-area" style="display:none;">

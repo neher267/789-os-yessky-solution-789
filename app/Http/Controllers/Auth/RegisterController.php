@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/users';
+    protected $redirectTo = 'register';
 
     /**
      * Create a new controller instance.
@@ -53,8 +53,8 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'role' => 'required|string|max:30',
             'primary_contact' => 'required|string|max:15',
-            'secondary_contact' => 'string|max:15',
-            'aditional_notes' => 'string',
+            'secondary_contact' => 'max:15',
+            'aditional_notes' => '',
         ]);
     }
 

@@ -26,7 +26,7 @@
                     <span class="title">Flights Menu</span>
 
                     <span class="badge badge-success2" style="margin-right:20px; margin-top:5px;">
-                        287                                
+                        {{$pendings->count()}}                                
                     </span>
 
                     <span class="arrow"></span> 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+'<!DOCTYPE html>
 <html lang="en-US">
 
 <head>
@@ -53,7 +53,7 @@
 
         <div class="page-footer">
             <div class="page-footer-inner">
-                2018 &copy; Aerogon PTE Ltd. </div>
+                2018 &copy; {{config('app.name')}} (Pvt.) Co. Ltd </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
             </div>
@@ -76,12 +76,23 @@
     
     <script src="{{asset('frontend/app.js')}}"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.flash').delay(7000).fadeOut(1000);
+
+            $(".change-status").change(function(){
+                result = confirm('Are you sure want to change status?');
+                if (result) { $('#status-form').submit(); }
+            });
+        } );
+    </script>
+
     <!-- datepcker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-    $( function() {
+    $(function() {
         $( ".datepicker" ).datepicker();
     } );
     </script>
@@ -135,5 +146,6 @@
         $('.bst-second').text(bstSecond);
     }, 1000);
 </script>
+
 </body>
 </html>

@@ -8,9 +8,18 @@
     <div class="row" style="margin-top: 25px">
         <div class="col-md-12">
             <div class="panel panel-default">
+                
                 <div class="panel-heading">Create User</div>
 
                 <div class="panel-body">
+                    <div style="width: 100%; text-align: center;">
+                        @if (session('success'))
+                            <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    </div>
+                    
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -48,8 +57,8 @@
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role" required autofocus>
                                     <option value="">Select</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Customer</option>
+                                    <option value="admen">Admin</option>
+                                    <option value="customer">Customer</option>
                                 </select>
 
                                 @if ($errors->has('role'))

@@ -1,11 +1,15 @@
 <div class="portlet light bordered">
     <div class="portlet-title">
+        <div style="width: 100%; text-align: center;">
+            @if (session('success'))
+                <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         <div class="caption">
             <span class="caption-subject font-dark2 bold uppercase">Last {{$results->count()}} Requests</span>
         </div>
-        <!-- <div class="pull-right">
-            <a class="btn btn-primary" href="permit/pending">View All</a>
-        </div> -->
     </div>
     <div class="portlet-body">
         <div class="permit-list-table table-responsive">
@@ -24,7 +28,7 @@
                         <th>Callsign</th>
                         <!--                        <th>Progress</th>-->
                         <th>Status</th>
-                        <th>&nbsp;</th>
+                        <th style="width: {{Auth::user()->role == 'admen' ? "185px":"auto"}}">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,12 +57,34 @@
                             {{$result->call_sign}}    
                         </td>
                         <td>
-                            <span class='label label-sm' style='color: #ffffff; background-color: #636342' data-type='1'> Review on {{$result->status}} </span>
+                            @if($result->status == 'pending')
+                            <span class='label label-sm' style='text-transform: capitalize; color: #ffffff; background-color: #636342' data-type='1'>{{$result->status}} 
+                            </span>
+                            @elseif($result->status == 'approved')
+                            <span class='label label-sm' style='text-transform: capitalize; color: #ffffff; background-color: green' data-type='1'>{{$result->status}} 
+                            </span>
+                            @elseif($result->status == 'cancelled')
+                            <span class='label label-sm' style='text-transform: capitalize; color: #ffffff; background-color: red' data-type='1'>{{$result->status}} 
+                            </span>
+                            @endif
                         </td>
                         <td>
-                            <a href="https://caab.pod.aero/auth/site/1342?tg=562-1018" class="btn btn-sm btn-outline grey-salsa">
+                            <a href="#" class="btn btn-sm btn-outline grey-salsa" style="margin-right: 0px;">
                                 <i class="fa fa-search"></i> View
                             </a>
+                            @if(Auth::user()->role == 'admen')
+
+                            <form id="status-form" style="display: inline;" action="{{route('landing-requests.update', $result)}}" method="post">
+                                {{ csrf_field() }}    
+                                {{ method_field('PUT') }}    
+
+                                <select name="status" class="form-control change-status" style="width: 116px;" required>
+                                    <option value="">Edit Status</option>
+                                    <option value="approved">Approve</option>
+                                    <option value="cancelled">Cancel</option>                                    
+                                </select>
+                            </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
