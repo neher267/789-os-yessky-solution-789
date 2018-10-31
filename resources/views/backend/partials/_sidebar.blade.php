@@ -76,14 +76,14 @@
                 </ul>
             </li>
 
-            @if(Auth::user()->role == 'admen')
+            @if(Auth::user()->role == 'super-admen')
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-users"></i>
                     <span class="title">Users</span>
-
                     <span class="arrow"></span> </a>                    
                 <ul class="sub-menu">
+
                     <li class="nav-item ">
                         <a href="{{route('register')}}" class="nav-link ">
                             <i class="fa fa-user"></i>
@@ -108,6 +108,52 @@
             </li>
             @endif
 
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Operators</span>
+
+                    <span class="arrow"></span> </a>                    
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{route('operators.create')}}" class="nav-link ">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Add Operator</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="{{route('operators.index')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Operators</span>
+                        </a>
+                    </li>                                        
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Countries</span>
+
+                    <span class="arrow"></span> </a>                    
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{route('countries.create')}}" class="nav-link ">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Add Country</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="{{route('countries.index')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Countries</span>
+                        </a>
+                    </li>                                        
+                </ul>
+            </li>
+
             @if(Auth::user()->role == 'customer')
             <li class="nav-item">
                 <a href="{{url('dashboard/contact-us')}}" class="nav-link">
@@ -115,7 +161,6 @@
                     <span class="title">Customer Support</span>
 
                 </a>
-
             </li>
             @endif
 

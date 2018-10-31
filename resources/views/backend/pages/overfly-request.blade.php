@@ -40,7 +40,7 @@
                 <div class="progress-bar progress-bar-warning" style="width:33%"></div>
             </div>
 
-            <h1 class="page-title" style="text-align: center;">Permit Request for Overfly</h1>
+            <h1 class="page-title" style="text-align: center; font-size: 30px; color: #1bbc9b;">Permit Request for Overfly</h1>
             <div style="width: 100%; text-align: center;">
                 @if (session('success'))
                     <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
@@ -48,92 +48,80 @@
                     </div>
                 @endif
             </div>
-            <hr>
 
             <div>
                 <form action="{{route('overfly-requests.store')}}" method="post">
                     {{ csrf_field() }}
                     
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="portlet light bordered">
                                 <div class="portlet-body">
                                     <div class="form-horizontal">
-                                        <div class="form-group field-overflyformstep1-operatorname required">
-                                            <div class="col-md-4 pod-label-text-right">
-                                                <label class="control-label" for="overflyformstep1-operatorname">Name of Operator</label>
+                                        <div class="form-group required">
+                                            <div class="col-md-3 pod-label-text-right">
+                                                <label class="control-label" for="operatorname">Name of Operator</label>
                                             </div>
-                                            <div class="col-md-8">
-                                                <input type="text" id="1overflyformstep1-operatorname" class="form-control operator-name-ajax-trigger" name="operatorName" autocomplete="off" required>
+                                            <div class="col-md-7">
+                                                <input type="text" id="operatorname" class="form-control operatorname-autocom" name="operatorName" autocomplete="off" required>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
 
-                                        <div id="1operator-list-table-area" style="display: block">
+                                        <div id="operator-list" style="display: none;">
                                             <div class="row">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-8">
-                                                    <table class="table table-striped table-bordered" id="1operator-list-table" style="display: none">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-striped table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>Name</th>
                                                                 <th>Address</th>
                                                                 <th class="text-right" style="width:5%">
+                                                                    Select
                                                                 </th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-
+                                                        <tbody id="t-body">
+                                                            
                                                         </tbody>
                                                     </table>
                                                     <div id="1operator-list-message"></div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <table id="1operator-tr" style="display: none">
-                                            <tbody>
-                                                <tr>
-                                                    <td>[NAME]</td>
-                                                    <td>[ADDRESS]</td>
-                                                    <td class="text-right">
-                                                        <button type="button" class="btn btn-xs blue-madison select-org" value="ajax/organization/create-operator" title="Select [NAME] as Operator" dataa-id="1[ID" dataa-name="[NAME"><i class="fa fa-mouse-pointer" aria-hidden="true"></i> Select</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        </div>                                     
 
                                         <div class="form-group field-overflyformstep1-billingaddress required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-billingaddress">Billing Address</label>
                                             </div>
-                                            <div class="col-md-8">
-                                                <textarea id="1overflyformstep1-billingaddress" class="form-control" name="billingAddress" rows="3" required></textarea>
+                                            <div class="col-md-7">
+                                                <textarea id="billingaddress" class="form-control" name="billingAddress" rows="3" required></textarea>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-aircraftregistration required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-aircraftregistration">Aircraft Registration</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="text" id="1overflyformstep1-aircraftregistration" class="form-control aircraft-registration-field" name="aircraftRegistration" maxlength="10" required>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="text-checkbox-group">
                                             <div class="form-group field-overflyformstep1-callsign required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="overflyformstep1-callsign">Call Sign</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="1overflyformstep1-callsign" class="form-control callsign-field" name="callsign" required>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-overflyformstep1-callsigncheckbox">
-                                                <div class="col-md-4 pod-label-text-right"></div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-3 pod-label-text-right"></div>
+                                                <div class="col-md-7">
                                                     <input type="hidden" name="callsignCheckbox" value="0">
                                                     <label>
                                                         <input type="checkbox" id="1overflyformstep1-callsigncheckbox" class="callsign-checkbox" name="callsignCheckbox" value="1"> Same as Aircraft Registration</label>
@@ -144,17 +132,17 @@
 
                                         <div class="text-checkbox-group">
                                             <div class="form-group field-overflyformstep1-tripreferenceno">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="overflyformstep1-tripreferenceno">Trip Reference No.</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="1overflyformstep1-tripreferenceno" class="form-control trip-ref-text" name="tripReferenceNo">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-overflyformstep1-triprefcheckbox">
-                                                <div class="col-md-4 pod-label-text-right"></div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-3 pod-label-text-right"></div>
+                                                <div class="col-md-7">
                                                     <input type="hidden" name="tripRefCheckbox" value="0">
                                                     <label>
                                                         <input type="checkbox" id="1overflyformstep1-triprefcheckbox" class="trip-ref-checkbox" name="tripRefCheckbox" value="1"> Same as Call Sign</label>
@@ -164,22 +152,22 @@
                                         </div>
 
                                         <div class="form-group field-overflyformstep1-aircrafttype required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-aircrafttype">Type of Aircraft</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="text" id="1overflyformstep1-aircrafttype" class="form-control aircraft-type-field" name="aircraftType" required>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
 
                                         <div class="inline-form-group form-group" style="overflow: hidden;">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <div class="form-group field-overflyformstep1-mtow required">
                                                     <label class="control-label" for="overflyformstep1-mtow">Maximum All up weight</label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <div class="form-group field-overflyformstep1-mtow required">
                                                     <input type="number" id="1overflyformstep1-mtow" class="form-control mtow-field" name="mtow" required>
                                                     <div class="help-block"></div>
@@ -215,10 +203,10 @@
                                     <div class="form-horizontal">
 
                                         <div class="form-group field-overflyformstep1-flightrules required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-flightrules">Flight Rules</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <select id="1overflyformstep1-flightrules" class="form-control" name="flightRules" required>
                                                     <option value="">Select...</option>
                                                     <option value="IFR">IFR</option>
@@ -228,37 +216,37 @@
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-flightroute">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-flightroute">Sector</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="text" id="1overflyformstep1-flightroute" class="form-control" name="flightRoute">
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-flightlevel">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-flightlevel">Flight Level</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="text" id="1overflyformstep1-flightlevel" class="form-control" name="flightLevel">
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-crewcount required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-crewcount">Crew Count</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="number" id="1overflyformstep1-crewcount" class="form-control" name="crewCount" required>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-paxcount required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-paxcount">PAX Count</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="number" id="1overflyformstep1-paxcount" class="form-control" name="paxCount" required>
                                                 <div class="help-block"></div>
                                             </div>
@@ -268,15 +256,15 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="portlet light bordered">
                                 <div class="portlet-body">
                                     <div class="form-horizontal">
                                         <div class="form-group field-overflyformstep1-flightcategory required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-flightcategory">Purpose of Flight</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <select id="1overflyformstep1-flightcategory" class="form-control flight-category-field emergency-calc_0" name="flightCategory" required>
                                                     <option value="">Select...</option>
                                                     <option value="Business Flight">Business Flight</option>
@@ -295,8 +283,8 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-7">
                                                 <div>
                                                     <div class="permit_type_description_box" id="1permit_type_description_box_1" style="display:none;">
                                                         Note: Business flight category in aviation industry means, transporting a small groups of people. It also includes the evacuation of casualties or express parcel deliveries used by public bodies, government officials or the armed forces. </div>
@@ -324,10 +312,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group field-overflyformstep1-dangergoods required">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label">Danger Goods</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <input type="hidden" name="dangerGoods" value="">
                                                 <div id="1overflyformstep1-dangergoods" class="danger-goods-radio-list inline-list2" style="margin-top:6px;" required>
                                                     <label>
@@ -338,10 +326,10 @@
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
-                                        <!-- <div class="dg-field-area" style="display: none;">
+                                        <div class="dg-field-area" style="display: none;">
                                             <div class="row">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-7">
                                                     <div class="denger-good-notification-box" id="1denger-good-notification-box" style2="display:none;color: #ce1613">
                                                         <p>
                                                             DG &#8203;permit &#8203;&#8203;request &#8203;optimizes certain functions &#8203;which &#8203;relate&#8203;s&#8203; to preparation and acceptance of dangerous goods declarations to process and ensure the safe and compliant shipment of dangerous goods. &#8203;Please provide related permission or document to below address to continue with the permit application. &#8203;
@@ -354,39 +342,39 @@
                                             </div>
 
                                             <div class="form-group field-overflyformstep1-dgunno required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="overflyformstep1-dgunno">DG UN Number</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="1overflyformstep1-dgunno" class="form-control dg-field" name="dgUnNo" required>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-overflyformstep1-dgtype required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="overflyformstep1-dgtype">Type of DG</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="1overflyformstep1-dgtype" class="form-control dg-field" name="dgType" required>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-overflyformstep1-dgdescription required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="overflyformstep1-dgdescription">DG Description</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <textarea id="1overflyformstep1-dgdescription" class="form-control dg-field" name="dgDescription" required></textarea>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                         </div>
- -->
+
                                         <div class="form-group field-overflyformstep1-notes">
-                                            <div class="col-md-4 pod-label-text-right">
+                                            <div class="col-md-3 pod-label-text-right">
                                                 <label class="control-label" for="overflyformstep1-notes">Notes</label>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-7">
                                                 <textarea id="1overflyformstep1-notes" class="form-control" name="notes" maxlength="500" rows="2"></textarea>
                                                 <div class="help-block"></div>
                                             </div>
@@ -395,7 +383,7 @@
                                 </div>
                             </div>
 
-                            <div class="portlet light bordered">
+                            <div class="portlet light bordered" style="padding-left: 16%">
                                 <div class="portlet-body pod-label-text-center caps-label2 small-label2">
                                     <!--                <div id="1op-time-diff"></div>-->
 
@@ -406,7 +394,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-depdate required">
                                                 <label class="control-label" for="overflyformstep1-depdate">Departure Date</label>
                                                 <input type="text" id="1overflyformstep1-depdate" class="datepicker text-center dep-date_0 emergency-calc_0 form-control krajee-datepicker" name="depDate" readonly required>
@@ -415,7 +403,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-etdutc required">
                                                 <label class="control-label" for="overflyformstep1-etdutc">ETD UTC</label>
                                                 <input type="text" id="1overflyformstep1-etdutc" class="form-control timepicker text-center dep-time_0 emergency-calc_0 disabled-input2" name="etdUtc" readonly="" required>
@@ -425,7 +413,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 custom-placeholder">
+                                        <div class="col-md-5 custom-placeholder">
                                             <div class="form-group field-overflyformstep1-depfrom required">
                                                 <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
@@ -443,7 +431,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-arrdate required">
                                                 <label class="control-label" for="overflyformstep1-arrdate">Arrival Date</label>
                                                 <input type="text" id="1overflyformstep1-arrdate" class="text-center form-control datepicker" name="arrDate" readonly="" required>
@@ -451,7 +439,7 @@
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-etautc required">
                                                 <label class="control-label" for="overflyformstep1-etautc">ETA UTC</label>
                                                 <input type="text" id="1overflyformstep1-etautc" class="form-control timepicker text-center" name="etaUtc" readonly="" required>
@@ -463,7 +451,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6 custom-placeholder">
+                                        <div class="col-md-5 custom-placeholder">
                                             <div class="form-group field-overflyformstep1-arrto required">
                                                 <label class="control-label" for="overflyformstep1-arrto">Aerodrome of Destination</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-arrto">&nbsp;</div>
@@ -479,7 +467,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-firin required">
                                                 <label class="control-label" for="overflyformstep1-firin">FIR In</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-firin">&nbsp;</div>
@@ -508,7 +496,7 @@
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-firout required">
                                                 <label class="control-label" for="overflyformstep1-firout">FIR Out</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-firout">&nbsp;</div>
@@ -554,8 +542,174 @@
 
         </div>
     </div>
+
+    <div id="operator-create-modal" class="fade modal" role="dialog" tabindex="-1" style="margin-left: 15%; margin-top: 20px">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h1 class="page-title" style="margin:5px;">Add New Operator</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div id="operator-create-modal-content">
+                                <!--NEW-->
+                                <form id="operator-create-ajax" action="{{route('operators.store')}}" method="post">
+        {{ csrf_field() }}
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-name required">
+                    <label class="control-label" for="operatorform-name">Name</label>
+                    <input id="operatorform-name" class="form-control input-field" name="name" aria-required="true" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-email required">
+                    <label class="control-label" for="operatorform-email">Email</label>
+                    <input id="operatorform-email" class="form-control input-field" name="email" maxlength="" type="email">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-address_line_1 required">
+                    <label class="control-label" for="operatorform-address_line_1">Billing Address Line 1</label>
+                    <input id="operatorform-address_line_1" class="form-control input-field" name="address_line_1" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-address_line_2 required">
+                    <label class="control-label" for="operatorform-address_line_2">Billing Address Line 2</label>
+                    <input id="operatorform-address_line_2" class="form-control input-field" name="address_line_2" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-country required">
+                    <label class="control-label" for="operatorform-country">Country</label>
+                    <select id="operatorform-country" class="form-control input-field" name="country_id">
+                        <option value="">Select</option>
+                        @foreach($options as $option)
+                        <option value="{{$option->id}}">{{$option->name}}</option>
+                        @endforeach 
+
+                    </select>
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-city required">
+                    <label class="control-label" for="operatorform-city">City</label>
+                    <input id="operatorform-business_phone" class="form-control input-field" name="city_id" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-business_phone required">
+                    <label class="control-label" for="operatorform-business_phone">Contact</label>
+                    <input id="operatorform-business_phone" class="form-control input-field" name="business_phone" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-business_phone_extension ">
+                    <label class="control-label" for="operatorform-business_phone_extension">Extension</label>
+                    <input id="operatorform-business_phone_extension" class="form-control input-field" name="business_phone_extension" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-postal_code required">
+                    <label class="control-label" for="operatorform-postal_code">Postal Code</label>
+                    <input id="operatorform-postal_code" class="form-control input-field" name="postal_code" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-fax_number ">
+                    <label class="control-label" for="operatorform-fax_number">Fax Number</label>
+                    <input id="operatorform-fax_number" class="form-control input-field" name="fax_number" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-icao">
+                    <label class="control-label" for="operatorform-icao">Nearest Operating Airport (ICAO)</label>
+                    <select id="operatorform-icao" class="form-control input-field" name="icao">
+
+                    </select>
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-website">
+                    <label class="control-label" for="operatorform-website">Website</label>
+                    <input id="operatorform-website" class="form-control input-field" name="website" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-comment">
+                    <label class="control-label" for="operatorform-comment">Additional Notes</label>
+                    <input id="operatorform-comment" class="form-control input-field" name="comment" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-block">
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Add new</button>
+        </div>
+    </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
     <!-- END CONTENT -->
 
 </div>
 <!-- END CONTENT BODY -->
+
 @endsection

@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('get-operators','AjaxController@get_operators');
+
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['auth']], function() {
 	Route::get('/', 'HomeController@index');
 	Route::get('contact-us', 'HomeController@contact');
@@ -22,6 +24,8 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	Route::resource('payments', 'PaymentController');
 	Route::resource('landing-requests', 'LandingRequestController');
 	Route::resource('overfly-requests', 'OverFlyRequestController');		
+	Route::resource('operators', 'OperatorsController');		
+	Route::resource('countries', 'CountriesController');		
 	Route::get('users/customers', 'UserManagementController@customers')->name('users.customers');
 	Route::get('users/admens', 'UserManagementController@admens')->name('users.admens');
 

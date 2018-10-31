@@ -16,7 +16,7 @@
                         <tr>
                             <th>Sr.No</th>
                             <th>Name</th>
-                            <th>Role</th>
+                            <!-- <th>Role</th> -->
                             <th>Email</th>
                             <th>Actions</th>
                         </tr>
@@ -31,10 +31,12 @@
                                 <img src="{{asset($result->image)}}" style="height: 50px; box-shadow: 2px 4px 5px darkgrey; margin: 3px;">
                             </td> -->
                                 <td>{{$result->name}}</td>
-                                <td>{{$result->role == 1 ? "Admin":"Moderator"}}</td>
+                                <!-- <td>{{$result->role == 1 ? "Admin":"Moderator"}}</td> -->
                                 <td>{{$result->email}}</td>
                                 <td>
-                                    <a href="{{route($name.'.edit.role', $result)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Role Edit </a> @if(Auth::user()->role == 1)
+                                    <!-- <a href="{{route($name.'.edit.role', $result)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Role Edit </a> -->
+
+                                    @if(Auth::user()->role == 'admen')
                                     <form action="{{route($name.'.destroy', $result)}}" method="POST" style="display: inline;">
                                         {{ csrf_field() }} {{ method_field('DELETE') }}
 

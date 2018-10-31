@@ -33,7 +33,7 @@ class UserManagementController extends Controller
     {
     	$name = 'users';
     	$page_title = "Edit User";
-    	return view('layouts.backend2.pages.users.edit', compact('user', 'page_title', 'name'));
+    	return view('backend.pages.users.edit', compact('user', 'page_title', 'name'));
     }
 
     public function update_role(Request $request, User $user)

@@ -7,14 +7,13 @@
         <div class="x_panel">
             <div class="x_title">             
                 <!-- fa-arrow-left fa-plus -->
-                <a href="{{route('users')}}" class="btn btn-round btn-default"><i class="fa fa-arrow-left fa-icon"></i>Back</a>
-              @include('layouts.backend2.partials._panel-toolbox')
+                <a href="{{route('users.customers')}}" class="btn btn-round btn-default"><i class="fa fa-arrow-left fa-icon"></i>Back</a>
             </div>
             <div class="page-title">{{$page_title}}</div>
 
             <div class="x_content">
                 <br />
-                <form class="form-horizontal" method="POST" action="{{route('users.update.role', $user)}}">
+                <form class="form-horizontal" method="POST" action="">
                     {{csrf_field()}}
                     {{ method_field("PUT") }}
 

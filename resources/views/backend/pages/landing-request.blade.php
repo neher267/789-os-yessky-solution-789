@@ -63,7 +63,7 @@
                     <div class="progress-bar progress-bar-warning" style="width:20%"></div>
                 </div>
 
-                <h1 class="page-title" style="text-align: center;">Permit Request for Landing</h1>
+                <h1 class="page-title" style="text-align: center; font-size: 30px; color: #1bbc9b;">Permit Request for Landing</h1>
                 <div style="width: 100%; text-align: center;">
                     @if (session('success'))
                         <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
@@ -71,91 +71,81 @@
                         </div>
                     @endif
                 </div>
-                <hr>
 
                 <div>
                     <form id="req-step-1-form" action="{{route('landing-requests.store')}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="portlet light bordered">
                                     <div class="portlet-body">
                                         <div class="form-horizontal">
-                                            <div class="form-group field-landingformstep1-operatorname required">
-                                                <div class="col-md-4 pod-label-text-right">
-                                                    <label class="control-label" for="landingformstep1-operatorname">Operator Name</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="text" id="landingformstep1-operatorname" class="form-control" name="operatorName" autocomplete="off" aria-required="true">
-                                                    <div class="help-block"></div>
+                                            <div class="form-group required">
+                                            <div class="col-md-3 pod-label-text-right">
+                                                <label class="control-label" for="operatorname">Name of Operator</label>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="text" id="operatorname" class="form-control operatorname-autocom" name="operatorName" autocomplete="off" required>
+                                                <div class="help-block"></div>
+                                            </div>
+                                        </div>
+
+                                        <div id="operator-list" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-7">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Address</th>
+                                                                <th class="text-right" style="width:5%">
+                                                                    Select
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="t-body">
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                    <div id="1operator-list-message"></div>
                                                 </div>
                                             </div>
+                                        </div>                                     
 
-                                            <!-- <div id="operator-list-table-area">
-                                                <div class="row">
-                                                    <div class="col-md-4"></div>
-                                                    <div class="col-md-8">
-                                                        <table class="table table-striped table-bordered" id="operator-list-table" style="display: none">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Address</th>
-                                                                    <th class="text-right" style="width:5%">
-                                                                    </th>
-                                                                </tr>
-                                                            </thead>
-
-                                                            <tbody></tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-                                            <!-- <table id="operator-tr" style="display: none">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>[NAME]</td>
-                                                        <td>[ADDRESS]</td>
-                                                        <td class="text-right">
-                                                            <button type="button" class="btn btn-xs blue-madison select-org" value="ajax/organization/create-operator" title="Select [NAME] as Operator" data-id="[ID" data-name="[NAME"><i class="fa fa-mouse-pointer" aria-hidden="true"></i> Select</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table> -->
-
-                                            <div class="form-group field-landingformstep1-billingaddress required">
-                                                <div class="col-md-4 pod-label-text-right">
-                                                    <label class="control-label" for="landingformstep1-billingaddress">Billing Address</label>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <textarea id="landingformstep1-billingaddress" class="form-control" name="billingAddress" rows="3" aria-required="true"></textarea>
-                                                    <div class="help-block"></div>
-                                                </div>
+                                        <div class="form-group field-overflyformstep1-billingaddress required">
+                                            <div class="col-md-3 pod-label-text-right">
+                                                <label class="control-label" for="overflyformstep1-billingaddress">Billing Address</label>
                                             </div>
+                                            <div class="col-md-7">
+                                                <textarea id="billingaddress" class="form-control" name="billingAddress" rows="3" required></textarea>
+                                                <div class="help-block"></div>
+                                            </div>
+                                        </div>
 
                                             <div class="form-group field-landingformstep1-aircraftregistration required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-aircraftregistration">Aircraft Registration</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-aircraftregistration" class="form-control aircraft-registration-field" name="aircraftRegistration" maxlength="10" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="text-checkbox-group">
                                                 <div class="form-group field-landingformstep1-callsign required">
-                                                    <div class="col-md-4 pod-label-text-right">
+                                                    <div class="col-md-3 pod-label-text-right">
                                                         <label class="control-label" for="landingformstep1-callsign">Callsign</label>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-7">
                                                         <input type="text" id="landingformstep1-callsign" class="form-control callsign-field" name="callsign" aria-required="true">
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group field-landingformstep1-callsigncheckbox">
-                                                    <div class="col-md-4 pod-label-text-right"></div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-3 pod-label-text-right"></div>
+                                                    <div class="col-md-7">
                                                         <input type="hidden" name="callsignCheckbox" value="0">
                                                         <label>
                                                             <input type="checkbox" id="landingformstep1-callsigncheckbox" class="callsign-checkbox" name="callsignCheckbox" value="1"> Same as Aircraft Registration</label>
@@ -166,17 +156,17 @@
 
                                             <div class="text-checkbox-group">
                                                 <div class="form-group field-landingformstep1-tripreferenceno">
-                                                    <div class="col-md-4 pod-label-text-right">
+                                                    <div class="col-md-3 pod-label-text-right">
                                                         <label class="control-label" for="landingformstep1-tripreferenceno">Trip Reference No.</label>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-7">
                                                         <input type="text" id="landingformstep1-tripreferenceno" class="form-control trip-ref-text" name="tripReferenceNo">
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group field-landingformstep1-triprefcheckbox">
-                                                    <div class="col-md-4 pod-label-text-right"></div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-3 pod-label-text-right"></div>
+                                                    <div class="col-md-7">
                                                         <input type="hidden" name="tripRefCheckbox" value="0">
                                                         <label>
                                                             <input type="checkbox" id="landingformstep1-triprefcheckbox" class="trip-ref-checkbox" name="tripRefCheckbox" value="1"> Same as Callsign</label>
@@ -186,22 +176,22 @@
                                             </div>
 
                                             <div class="form-group field-landingformstep1-aircrafttype required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-aircrafttype">Aircraft Type</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-aircrafttype" class="form-control aircraft-type-field" name="aircraftType" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
 
                                             <div class="inline-form-group form-group" style="overflow: hidden;">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <div class="form-group field-landingformstep1-mtow required">
                                                         <label class="control-label" for="landingformstep1-mtow">Maximum All up weight</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-4">
                                                     <div class="form-group field-landingformstep1-mtow required">
                                                         <input type="number" id="landingformstep1-mtow" class="form-control mtow-field" name="mtow" aria-required="true">
                                                         <div class="help-block"></div>
@@ -237,10 +227,10 @@
                                     <div class="portlet-body">
                                         <div class="form-horizontal">
                                             <div class="form-group field-landingformstep1-flightrules required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-flightrules">Flight Rules</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <select id="landingformstep1-flightrules" class="form-control" name="flightRules" aria-required="true">
                                                         <option value="">Select...</option>
                                                         <option value="IFR">IFR</option>
@@ -250,37 +240,37 @@
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-flightroute required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-flightroute">Sector</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-flightroute" class="form-control" name="flightRoute" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-flightlevel required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-flightlevel">Flight Level</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-flightlevel" class="form-control" name="flightLevel" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-crewcount required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-crewcount">Crew Count</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="number" id="landingformstep1-crewcount" class="form-control" name="crewCount" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-paxcount required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-paxcount">PAX Count</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="number" id="landingformstep1-paxcount" class="form-control" name="paxCount" aria-required="true">
                                                     <div class="help-block"></div>
                                                 </div>
@@ -293,20 +283,20 @@
                                     <div class="portlet-body">
                                         <div class="form-horizontal">
                                             <div class="form-group field-landingformstep1-flightplan">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-flightplan">Flight Plan</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="hidden" name="flightPlan" value="">
                                                     <input type="file" id="landingformstep1-flightplan" name="flightPlan">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-ospagent required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-ospagent">OSP Agent</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <select id="landingformstep1-ospagent" class="form-control" name="ospAgent" aria-required="true">
                                                         <option value="">Select...</option>
                                                         <option value="# 1. Aviation Support Limited (ASL)"># 1. Aviation Support Limited (ASL) </option>
@@ -333,37 +323,37 @@
                                     <div class="portlet-body">
                                         <div class="form-horizontal">
                                             <div class="form-group field-landingformstep1-aocvalidity">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-aocvalidity">AOC Valid Upto</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-aocvalidity" class="form-control datepicker" name="aocValidity" readonly="">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-corvalidity">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-corvalidity">COR Valid Upto</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-corvalidity" class="form-control datepicker" name="corValidity" readonly="">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-coavalidity">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-coavalidity">COA Valid Upto</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-coavalidity" class="form-control datepicker" name="coaValidity" readonly="">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group field-landingformstep1-insurancevalidity">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-insurancevalidity">Insurance Valid Upto</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="text" id="landingformstep1-insurancevalidity" class="form-control datepicker" name="insuranceValidity" readonly="">
                                                     <div class="help-block"></div>
                                                 </div>
@@ -374,15 +364,15 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="portlet light bordered">
                                     <div class="portlet-body">
                                         <div class="form-horizontal">
                                             <div class="form-group field-landingformstep1-flightcategory required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-flightcategory">Purpose of Flight</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <select id="landingformstep1-flightcategory" class="form-control flight-category-field emergency-calc_0" name="flightCategory" aria-required="true">
                                                         <option value="">Select...</option>
                                                         <option value="Business Flight">Business Flight</option>
@@ -403,8 +393,8 @@
                                                 </div>
                                             </div>
                                             <!-- <div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-7">
                                                     <div>
                                                         <div class="permit_type_description_box" id="permit_type_description_box_" style="display:none;">
                                                             Note: Business flight category in aviation industry means, transporting a small groups of people. It also includes the evacuation of casualties or express parcel deliveries used by public bodies, government officials or the armed forces. </div>
@@ -437,10 +427,10 @@
                                             </div> -->
 
                                             <div class="form-group field-landingformstep1-dangergoods required">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label">Danger Goods</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <input type="hidden" name="dangerGoods" value="">
                                                     <div id="landingformstep1-dangergoods" class="danger-goods-radio-list inline-list" style="margin-top:6px;" aria-required="true">
                                                         <label>
@@ -451,14 +441,14 @@
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="dg-field-area" style="display: none;">
+                                            <div class="dg-field-area" style="display: none;">
 
                                                 <div class="row">
-                                                    <div class="col-md-4"></div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-7">
                                                         <div class="denger-good-notification-box" id="denger-good-notification-box" style2="display:none;color: #ce1613">
                                                             <p>
-                                                                DG &#8203;permit &#8203;&#8203;request &#8203;optimizes certain functions &#8203;which &#8203;relate&#8203;s&#8203; to preparation and acceptance of dangerous goods declarations to process and ensure the safe and compliant shipment of dangerous goods. &#8203;Please provide related permission or document to below address to continue with the permit application. &#8203;
+                                                                DG ​permit ​​request ​optimizes certain functions ​which ​relate​s​ to preparation and acceptance of dangerous goods declarations to process and ensure the safe and compliant shipment of dangerous goods. ​Please provide related permission or document to below address to continue with the permit application. ​
                                                             </p>
                                                             <p>
                                                                 Email Address: dg@caab.gov.bd
@@ -468,39 +458,39 @@
                                                 </div>
 
                                                 <div class="form-group field-landingformstep1-dgunno required">
-                                                    <div class="col-md-4 pod-label-text-right">
+                                                    <div class="col-md-3 pod-label-text-right">
                                                         <label class="control-label" for="landingformstep1-dgunno">DG UN Number</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" id="landingformstep1-dgunno" class="form-control dg-field" name="dgUnNo" aria-required="true">
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="landingformstep1-dgunno" class="form-control dg-field" name="LandingFormStep1[dgUnNo]" aria-required="true">
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group field-landingformstep1-dgtype required">
-                                                    <div class="col-md-4 pod-label-text-right">
+                                                    <div class="col-md-3 pod-label-text-right">
                                                         <label class="control-label" for="landingformstep1-dgtype">Type of DG</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" id="landingformstep1-dgtype" class="form-control dg-field" name="dgType" aria-required="true">
+                                                    <div class="col-md-7">
+                                                        <input type="text" id="landingformstep1-dgtype" class="form-control dg-field" name="LandingFormStep1[dgType]" aria-required="true">
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group field-landingformstep1-dgdescription required">
-                                                    <div class="col-md-4 pod-label-text-right">
+                                                    <div class="col-md-3 pod-label-text-right">
                                                         <label class="control-label" for="landingformstep1-dgdescription">DG Description</label>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <textarea id="landingformstep1-dgdescription" class="form-control dg-field" name="dgDescription" aria-required="true"></textarea>
+                                                    <div class="col-md-7">
+                                                        <textarea id="landingformstep1-dgdescription" class="form-control dg-field" name="LandingFormStep1[dgDescription]" aria-required="true"></textarea>
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             <div class="form-group field-landingformstep1-notes">
-                                                <div class="col-md-4 pod-label-text-right">
+                                                <div class="col-md-3 pod-label-text-right">
                                                     <label class="control-label" for="landingformstep1-notes">Notes</label>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <textarea id="landingformstep1-notes" class="form-control" name="notes" maxlength="500" rows=""></textarea>
                                                     <div class="help-block"></div>
                                                 </div>

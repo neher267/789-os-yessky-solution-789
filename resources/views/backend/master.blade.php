@@ -1,4 +1,4 @@
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 
 <head>
@@ -35,9 +35,16 @@
 
     <link href="{{asset('backend/clint/css/custom.css?v=1.42a')}}" rel="stylesheet">
     <link href="{{asset('backend/clint/assets/4a47db2a/css/common.css')}}" rel="stylesheet">
+
+    <style type="text/css">
+        .page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {
+            background-color: #0e4060;
+        }
+    </style>
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white" style="background-color: #0e4060;">
     <div class="page-wrapper">
 
         @include('backend.partials._header')
@@ -73,8 +80,58 @@
     <script src="https://s3-ap-southeast-1.amazonaws.com/a1.pod/theme/v4.7.5/assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
 
     <script src="{{asset('backend/clint/assets/4a47db2a/js/main.js')}}"></script>
-    
+    <script src="{{asset('backend/clint/js/danger-goods-alert.js')}}"></script>
+
     <script src="{{asset('frontend/app.js')}}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- neher -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#operatorname').keyup(function(){   
+                var value = this.value;
+                var body = $("#t-body");
+                if (value.length > 1) {
+                    axios.post('http://sky.test/get-operators', {
+                        operator: value,
+                    })
+                    .then(function (response) {                        
+                        var aaa = ''
+                        body.html(aaa);
+                        
+                        if (response.data.length>0) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                var id = response.data[i].id+'uniqueid';
+                                aaa+= '<tr> <td id="'+id+'name">'+response.data[i].name+'</td><td id="'+id+'address">'+response.data[i].address_line_1+'</td><td> <button id="'+id+'" class="btn btn-primary btn-xs" type="button" onclick="operator_autocom(id)">Ok</button> </td></tr>';
+                            }
+                        } else{
+                            aaa+= '<tr><td colspan="3"><button id="'+id+'" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#operator-create-modal">Add New Operator</button></td></tr>';
+                        }
+
+                        $("#operator-list").css({"display":"block"});
+                        body.html(aaa);
+                        //console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }                
+            });
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        
+        function operator_autocom(id)
+        {
+            $('#operatorname').val($('#'+id+'name').html());
+            $('#billingaddress').html($('#'+id+'address').html());
+            $("#operator-list").css({"display":"none"});            
+        }        
+    </script>
+
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -86,6 +143,8 @@
             });
         } );
     </script>
+
+    <!-- end neher -->
 
     <!-- datepcker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -113,7 +172,9 @@
     <script>
     var separator = '<span class="pod-time-separator"></span>';
 
-    var utc = new Date(Date.UTC(2018,10,8,4,10,30));
+    var date = new Date();
+    var utc = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+                        date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()));
     
     var bst = utc;
     bst.setHours(bst.getUTCHours() + 6);

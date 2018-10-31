@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-lg-auto text-center">
-                        <li class="nav-item active  mr-lg-3 mt-lg-0 mt-3">
+                        <!-- <li class="nav-item active  mr-lg-3 mt-lg-0 mt-3">
                             <a class="nav-link" href="{{url('/')}}">Home
                                 <span class="sr-only">(current)</span>
                             </a>
@@ -77,11 +77,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </li>
                         <li class="nav-item mr-lg-3 mt-lg-0 mt-3">
                             <a class="nav-link scroll" href="#contact">Contact</a>
-                        </li>
+                        </li> -->
                         <li>
                             <button type="button" class="btn  ml-lg-2 w3ls-btn" data-toggle="modal" aria-pressed="false"
                                 data-target="#exampleModal">
-                                <i class="far fa-user-circle"></i>
+                                <i class="far fa-user-circle" style="font-size: 15px"></i> Login
                             </button>
                         </li>
                     </ul>

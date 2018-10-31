@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Request as FlightRequest;
+use App\Country;
 
 class OverFlyRequestController extends Controller
 {
@@ -25,7 +26,8 @@ class OverFlyRequestController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.overfly-request');
+        $options = Country::orderBy('name', 'asc')->get();
+        return view('backend.pages.overfly-request', compact('options'));
     }
 
     /**

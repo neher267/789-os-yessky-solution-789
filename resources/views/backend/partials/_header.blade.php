@@ -7,7 +7,7 @@
                 <div class="timer-area">
                     <span>UTC | </span>
                     <span class="utc-hour">-</span>
-                    <img src="" class="timer-separator" style="width:3px; display:none;" />
+                    <img src="{{asset('backend/clint/images/timer-separator.gif')}}" class="timer-separator" style="width:3px; display:none;" />
                     <span class="utc-minute"></span>
                     <!--                    <span class="utc-second"></span>-->
                 </div>
