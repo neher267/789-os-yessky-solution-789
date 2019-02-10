@@ -65,9 +65,10 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Country $country)
     {
-        //
+        $continents = Continent::orderBy('name', 'asc')->get();
+        return view('backend.pages.countries.edit', compact('country', 'continents'));
     }
 
     /**
@@ -77,9 +78,13 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Country $country)
     {
-        //
+        $country->name = $request->name;
+        $country->short_name = $request->short_name;
+        $country->continent_id = $request->continent_id;
+        $country->save();
+        return redirect('dashboard/countries')->withSuccess('Update Success!');
     }
 
     /**

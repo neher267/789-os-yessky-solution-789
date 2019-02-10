@@ -14,6 +14,7 @@
                     <span class="title">Dashboard</span>
                     <span class="selected"></span></a>
             </li>
+            @if(Auth::user()->role != 'moderator')            
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-plane"></i>
@@ -75,6 +76,7 @@
                     </li>
                 </ul>
             </li>
+            @endif 
 
             @if(Auth::user()->role == 'super-admen')
             <li class="nav-item">
@@ -92,6 +94,13 @@
                     </li>
 
                     <li class="nav-item ">
+                        <a href="{{route('users.admens')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Admens</span>
+                        </a>
+                    </li> 
+
+                    <li class="nav-item ">
                         <a href="{{route('users.customers')}}" class="nav-link ">
                             <i class="fa fa-users"></i>
                             <span class="title">Customers</span>
@@ -99,14 +108,15 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a href="{{route('users.admens')}}" class="nav-link ">
+                        <a href="{{route('users.moderators')}}" class="nav-link ">
                             <i class="fa fa-users"></i>
-                            <span class="title">Admins</span>
+                            <span class="title">Moderators</span>
                         </a>
-                    </li>                    
+                    </li>                                       
                 </ul>
             </li>
             @endif
+
 
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -126,6 +136,29 @@
                         <a href="{{route('operators.index')}}" class="nav-link ">
                             <i class="fa fa-users"></i>
                             <span class="title">Operators</span>
+                        </a>
+                    </li>                                        
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Airports</span>
+
+                    <span class="arrow"></span> </a>                    
+                <ul class="sub-menu">
+                    <li class="nav-item ">
+                        <a href="{{route('airports.create')}}" class="nav-link ">
+                            <i class="fa fa-user"></i>
+                            <span class="title">Add Airport</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="{{route('airports.index')}}" class="nav-link ">
+                            <i class="fa fa-users"></i>
+                            <span class="title">Airports</span>
                         </a>
                     </li>                                        
                 </ul>

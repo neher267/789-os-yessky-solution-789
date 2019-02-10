@@ -3,6 +3,9 @@
 <div class="page-content">
 
     <!-- BEGIN CONTENT -->
+    @include('backend.partials.flash')
+    @include('backend.partials.errors')
+    
     <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
@@ -31,7 +34,9 @@
                                 <td>{{$result->short_name}}</td>
                                 <td>{{$result->continet()->first()->name}}</td>
                                 <td>
-                                    @if(Auth::user()->role == 'admen')
+                                    <a class="btn btn-success btn-xs" href="{{route('countries.edit', $result)}}"><i class="fa fa-edit"></i> Edit </a>
+
+                                    @if(Auth::user()->role == 'admen' || Auth::user()->role == 'super-admen')
                                     <form action="{{route('countries.destroy', $result)}}" method="POST" style="display: inline;">
                                         {{ csrf_field() }} {{ method_field('DELETE') }}
 

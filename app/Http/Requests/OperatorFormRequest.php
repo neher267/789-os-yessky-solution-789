@@ -25,12 +25,12 @@ class OperatorFormRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:operators|max:191',
-            'email' => 'required|email|unique:operators|max:191',
+            'email' => 'nullable|email|unique:operators|max:191',
             'address_line_1' => 'required|max:191',
-            'address_line_2' => 'required|max:191',
+            'address_line_2' => 'nullable|max:191',
             'country_id' => 'required|max:5',
-            'city_id' => 'required|max:100',
-            'business_phone' => 'required|max:15',
+            'city_id' => 'nullable|max:100',
+            'business_phone' => 'nullable|max:15',
         ];
     }
 }

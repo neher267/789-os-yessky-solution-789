@@ -60,7 +60,7 @@
                 </ul>
 
                 <div id="bar" class="progress progress-striped active" role="progressbar">
-                    <div class="progress-bar progress-bar-warning" style="width:20%"></div>
+                    <div class="progress-bar progress-bar-success" style="width:20%"></div>
                 </div>
 
                 <h1 class="page-title" style="text-align: center; font-size: 30px; color: #1bbc9b;">Permit Request for Landing</h1>
@@ -531,17 +531,22 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6 custom-placeholder">
-                                                    <div class="form-group field-legform3-depfrom1 required">
-                                                        <label class="control-label" for="legform3-depfrom1">Aerodrome of Departure</label>
-                                                        <select id="legform3-depfrom1" class="form-control icao-dropdown" name="depFrom" aria-required="true">
-                                                            <option value="">Select</option>
-                                                            <option value="1">Option 1</option>
-                                                            <option value="2">Option 2</option>
-                                                        </select>
-
-                                                        <div class="help-block"></div>
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    <div class="form-group field-overflyformstep1-depfrom required">
+                                                        <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
+                                                        <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
+                                                        
+                                                        <input type="text" id="depFrom" class="form-control" placeholder="Search...">
                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    
+                                                    <select id="airport-list" name="depFrom" style="display: none;" class="form-control icao-dropdown">
+                                                        
+                                                    </select>
+
+                                                    <button style="display: none;" id="add-airport" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
                                                 </div>
                                             </div>
 
@@ -565,17 +570,22 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6 custom-placeholder">
-                                                    <div class="form-group field-legform3-arrto1 required">
-                                                        <label class="control-label" for="legform3-arrto1">Aerodrome of Destination</label>
-                                                        <select id="legform3-arrto1" class="form-control icao-dropdown select2" name="arrTo" aria-required="true">
-                                                            <option value="">Select</option>
-                                                            <option value="1">Option 1</option>
-                                                            <option value="">Option 2</option>
-                                                        </select>
-
-                                                        <div class="help-block"></div>
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    <div class="form-group field-overflyformstep1-depfrom required">
+                                                        <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Destination</label>
+                                                        <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
+                                                        
+                                                        <input type="text" id="arrTo" class="form-control" placeholder="Search...">
                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    
+                                                    <select id="airport-list2" name="arrTo" style="display: none;" class="form-control icao-dropdown">
+                                                        
+                                                    </select>
+
+                                                    <button style="display: none;" id="add-airport2" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -604,17 +614,22 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6 custom-placeholder">
-                                                    <div class="form-group field-legform3-depfrom2 required">
-                                                        <label class="control-label" for="legform3-depfrom">Aerodrome of Departure</label>
-                                                        <select id="legform3-depfrom" class="form-control icao-dropdown" name="goingDepFrom" aria-required="true">
-                                                            <option value="">Select</option>
-                                                            <option value="1">Option 1</option>
-                                                            <option value="">Option 2</option>
-                                                        </select>
-
-                                                        <div class="help-block"></div>
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    <div class="form-group field-overflyformstep1-depfrom required">
+                                                        <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
+                                                        <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
+                                                        
+                                                        <input type="text" id="goingDepFrom" class="form-control" placeholder="Search...">
                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    
+                                                    <select id="airport-list3" name="goingDepFrom" style="display: none;" class="form-control icao-dropdown">
+                                                        
+                                                    </select>
+
+                                                    <button style="display: none;" id="add-airport3" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
                                                 </div>
                                             </div>
 
@@ -638,17 +653,22 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6 custom-placeholder">
-                                                    <div class="form-group field-legform3-arrto2 required">
-                                                        <label class="control-label" for="legform3-arrto">Aerodrome of Destination</label>
-                                                        <select id="legform3-arrto" class="form-control icao-dropdown text-center" name="goingArrTo" aria-required="true">
-                                                            <option value="">Select</option>
-                                                            <option value="1">Option 1</option>
-                                                            <option value="">Option 2</option>
-                                                        </select>
-
-                                                        <div class="help-block"></div>
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    <div class="form-group field-overflyformstep1-depfrom required">
+                                                        <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Destination</label>
+                                                        <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
+                                                        
+                                                        <input type="text" id="goingArrTo" class="form-control" placeholder="Search...">
                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                                    
+                                                    <select id="airport-list4" name="goingArrTo" style="display: none;" class="form-control icao-dropdown">
+                                                        
+                                                    </select>
+
+                                                    <button style="display: none;" id="add-airport4" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
                                                 </div>
                                             </div>
 
@@ -730,8 +750,7 @@
         </div>
     </div>
     <!-- END CONTENT -->
-
+    @include('backend.partials._operator-model')
 </div>
-
 <!-- END CONTENT BODY -->
 @endsection

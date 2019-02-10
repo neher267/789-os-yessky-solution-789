@@ -81,7 +81,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li>
                             <button type="button" class="btn  ml-lg-2 w3ls-btn" data-toggle="modal" aria-pressed="false"
                                 data-target="#exampleModal">
-                                <i class="far fa-user-circle" style="font-size: 15px"></i> Login
+                                <i class="far fa-user-circle" style="font-size: 15px"></i> Members Login
                             </button>
                         </li>
                     </ul>
@@ -365,7 +365,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Members Login Form</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

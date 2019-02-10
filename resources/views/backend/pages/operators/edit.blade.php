@@ -1,52 +1,167 @@
-
 @extends('backend.master')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">             
-                <!-- fa-arrow-left fa-plus -->
-                <a href="{{route('users')}}" class="btn btn-round btn-default"><i class="fa fa-arrow-left fa-icon"></i>Back</a>
-              @include('layouts.backend2.partials._panel-toolbox')
+<!-- BEGIN CONTENT BODY -->
+<div class="page-content">
+
+    <!-- BEGIN CONTENT -->
+    <hr>
+    <h1 class="page-title" style="text-transform: capitalize; text-align: center;">{{$page_title}}</h1>
+
+    <div class="clearfix"></div>
+
+    @include('backend.partials.flash')
+    @include('backend.partials.errors')
+
+    <form id="operator-create-ajax" action="{{route('operators.update', $operator)}}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-name required">
+                    <label class="control-label" for="operatorform-name">Name</label>
+                    <input value="{{$operator->name}}" id="operatorform-name" class="form-control input-field" name="name" required type="text">
+
+                    <div class="help-block"></div>
+                </div>
             </div>
-            <div class="page-title">{{$page_title}}</div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-email">
+                    <label class="control-label" for="operatorform-email">Email</label>
+                    <input value="{{$operator->email}}" id="operatorform-email" class="form-control input-field" name="email" maxlength="" type="email">
 
-            <div class="x_content">
-                <br />
-                <form class="form-horizontal" method="POST" action="{{route('users.update.role', $user)}}">
-                    {{csrf_field()}}
-                    {{ method_field("PUT") }}
-
-                    <div class="form-group">
-                        <label for="role" class="col-md-4 control-label">User Role</label>
-
-                        <div class="col-md-6">
-                            <select id="role" class="form-control" name="role" required autofocus>
-                                <option value="">Select</option>
-                                <option value="1" {{$user->role == 1 ? "selected":""}}>Admin</option>
-                                <option value="2" {{$user->role == 2 ? "selected":""}}>Moderator</option>
-                            </select>
-                        </div>
-                    </div>                       
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                    <div class="help-block"></div>
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-address_line_1 required">
+                    <label class="control-label" for="operatorform-address_line_1">Billing Address Line 1</label>
+                    <input value="{{$operator->address_line_1}}" id="operatorform-address_line_1" class="form-control input-field" name="address_line_1" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-address_line_2">
+                    <label class="control-label" for="operatorform-address_line_2">Billing Address Line 2</label>
+                    <input value="{{$operator->address_line_2}}" id="operatorform-address_line_2" class="form-control input-field" name="address_line_2" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-operator required">
+                    <label class="control-label" for="operatorform-operator">Country</label>
+                    <select id="operatorform-operator" class="form-control input-field" name="country_id">
+                        <option value="">Select</option>
+                        @foreach($options as $option)
+                        <option value="{{$option->id}}" {{$option->id == $operator->country_id ? "selected":""}}>{{$option->name}}</option>
+                        @endforeach 
+
+                    </select>
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-city">
+                    <label class="control-label" for="operatorform-city">City</label>
+                    <input value="{{$operator->city_id}}" id="operatorform-business_phone" class="form-control input-field" name="city_id" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-business_phone">
+                    <label class="control-label" for="operatorform-business_phone">Contact</label>
+                    <input value="{{$operator->business_phone}}" id="operatorform-business_phone" class="form-control input-field" name="business_phone" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-business_phone_extension ">
+                    <label class="control-label" for="operatorform-business_phone_extension">Extension</label>
+                    <input value="{{$operator->business_phone_extension}}" id="operatorform-business_phone_extension" class="form-control input-field" name="business_phone_extension" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-postal_code required">
+                    <label class="control-label" for="operatorform-postal_code">Postal Code</label>
+                    <input value="{{$operator->postal_code}}" id="operatorform-postal_code" class="form-control input-field" name="postal_code" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-fax_number">
+                    <label class="control-label" for="operatorform-fax_number">Fax Number</label>
+                    <input value="{{$operator->fax_number}}" id="operatorform-fax_number" class="form-control input-field" name="fax_number" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-icao">
+                    <label class="control-label" for="operatorform-icao">Nearest Operating Airport (ICAO)</label>
+                    <select id="operatorform-icao" class="form-control input-field" name="icao">
+
+                    </select>
+
+                    <div class="help-block"></div>
+                </div>
+            </div>           
+
+        </div> -->
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-comment">
+                    <label class="control-label" for="operatorform-comment">Additional Notes</label>
+                    <input value="{{$operator->comment}}" id="operatorform-comment" class="form-control input-field" name="comment" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-website">
+                    <label class="control-label" for="operatorform-website">Website</label>
+                    <input value="{{$operator->website}}" id="operatorform-website" class="form-control input-field" name="website" type="text">
+
+                    <div class="help-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error-block">
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </form>
+<!-- END CONTENT -->
 </div>
-
-<script>
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace( 'description' );
-</script>
-
+<!-- END CONTENT BODY -->
 @endsection

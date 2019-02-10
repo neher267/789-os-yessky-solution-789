@@ -51,14 +51,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('couontry_id') ? ' has-error' : '' }}">
+                            <label for="couontry_id" class="col-md-4 control-label">Country</label>
+
+                            <div class="col-md-6">
+                                <select id="couontry_id" class="form-control" name="couontry_id" required autofocus>
+                                    <option value="">Select</option>
+                                    <option value="admen">Admen</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="moderator">Moderator</option>
+                                </select>
+
+                                @if ($errors->has('couontry_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('couontry_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                             <label for="role" class="col-md-4 control-label">User Role</label>
 
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role" required autofocus>
                                     <option value="">Select</option>
-                                    <option value="admen">Admin</option>
+                                    <option value="admen">Admen</option>
                                     <option value="customer">Customer</option>
+                                    <option value="moderator">Moderator</option>
                                 </select>
 
                                 @if ($errors->has('role'))
@@ -78,6 +98,20 @@
                                 @if ($errors->has('primary_contact'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('primary_contact') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="col-md-4 control-label">Address</label>
+
+                            <div class="col-md-6">
+                                <textarea class="form-control" name="address"></textarea>
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
                                     </span>
                                 @endif
                             </div>

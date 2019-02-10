@@ -10,7 +10,7 @@ class UserManagementController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admen');
+        $this->middleware('super-admen');
 	}
 
     public function customers()
@@ -27,6 +27,14 @@ class UserManagementController extends Controller
     	$type = "Admens";
     	$results = User::where('role', 'admen')->get();
     	return view('backend.pages.users.index', compact('results', 'type', 'name'));
+    }
+
+    public function moderators()
+    {
+        $name = 'users';
+        $type = "Admens";
+        $results = User::where('role', 'moderator')->get();
+        return view('backend.pages.users.index', compact('results', 'type', 'name'));
     }
 
     public function edit_role(User $user)

@@ -1,52 +1,62 @@
-
 @extends('backend.master')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">             
-                <!-- fa-arrow-left fa-plus -->
-                <a href="{{route('users')}}" class="btn btn-round btn-default"><i class="fa fa-arrow-left fa-icon"></i>Back</a>
-              @include('layouts.backend2.partials._panel-toolbox')
+<!-- BEGIN CONTENT BODY -->
+<div class="page-content">
+
+    <!-- BEGIN CONTENT -->
+    <hr>
+    <h1 class="page-title" style="text-transform: capitalize; text-align: center;">Edit Country</h1>
+    <hr>
+
+    <div class="clearfix"></div>
+
+    @include('backend.partials.flash')
+    @include('backend.partials.errors')
+
+    <form id="operator-create-ajax" action="{{route('countries.update', $country)}}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('PUT') }}
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-name required">
+                    <label class="control-label" for="operatorform-name">Name</label>
+                    <input value="{{$country->name}}" id="operatorform-name" class="form-control input-field" name="name" required type="text">
+
+                    <div class="help-block"></div>
+                </div>
             </div>
-            <div class="page-title">{{$page_title}}</div>
 
-            <div class="x_content">
-                <br />
-                <form class="form-horizontal" method="POST" action="{{route('users.update.role', $user)}}">
-                    {{csrf_field()}}
-                    {{ method_field("PUT") }}
+            <div class="col-md-6">
+                <div class="form-group field-operatorform-ahort-name required">
+                    <label class="control-label" for="operatorform-ahort-name">Short Name</label>
+                    <input value="{{$country->short_name}}" id="operatorform-ahort-name" class="form-control input-field" name="short_name" required type="text">
 
-                    <div class="form-group">
-                        <label for="role" class="col-md-4 control-label">User Role</label>
-
-                        <div class="col-md-6">
-                            <select id="role" class="form-control" name="role" required autofocus>
-                                <option value="">Select</option>
-                                <option value="1" {{$user->role == 1 ? "selected":""}}>Admin</option>
-                                <option value="2" {{$user->role == 2 ? "selected":""}}>Moderator</option>
-                            </select>
-                        </div>
-                    </div>                       
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                    <div class="help-block"></div>
+                </div>
             </div>
+
+            <div class="col-md-6 modal-select2">
+                <div class="form-group field-operatorform-continet required">
+                    <label class="control-label" for="operatorform-continet">Continent</label>
+                    <select id="operatorform-continet" class="form-control input-field" name="continent_id" required>
+                        <option value="">Select</option>
+                         @foreach($continents as $continent)
+                         <option value="{{$continent->id}}" {{$country->continent_id == $continent->id ? "selected":""}}>{{$continent->name}}</option>
+                         @endforeach                  
+                     </select>
+
+                    <div class="help-block"></div>
+                </div>
+            </div>            
+        </div>        
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Update</button>
         </div>
-    </div>
+    </form>
+<!-- END CONTENT -->
 </div>
-
-<script>
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace( 'description' );
-</script>
-
+<!-- END CONTENT BODY -->
 @endsection

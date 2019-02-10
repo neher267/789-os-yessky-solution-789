@@ -37,7 +37,7 @@
 
             </ul>
             <div id="1bar" class="progress progress-striped active" role="progressbar">
-                <div class="progress-bar progress-bar-warning" style="width:33%"></div>
+                <div class="progress-bar progress-bar-success" style="width:33%"></div>
             </div>
 
             <h1 class="page-title" style="text-align: center; font-size: 30px; color: #1bbc9b;">Permit Request for Overfly</h1>
@@ -105,17 +105,17 @@
                                                 <label class="control-label" for="overflyformstep1-aircraftregistration">Aircraft Registration</label>
                                             </div>
                                             <div class="col-md-7">
-                                                <input type="text" id="1overflyformstep1-aircraftregistration" class="form-control aircraft-registration-field" name="aircraftRegistration" maxlength="10" required>
+                                                <input type="text" id="aircraftRegistration" class="form-control aircraft-registration-field" name="aircraftRegistration" maxlength="10" required>
                                                 <div class="help-block"></div>
                                             </div>
                                         </div>
                                         <div class="text-checkbox-group">
                                             <div class="form-group field-overflyformstep1-callsign required">
                                                 <div class="col-md-3 pod-label-text-right">
-                                                    <label class="control-label" for="overflyformstep1-callsign">Call Sign</label>
+                                                    <label class="control-label" for="callsign">Call Sign</label>
                                                 </div>
                                                 <div class="col-md-7">
-                                                    <input type="text" id="1overflyformstep1-callsign" class="form-control callsign-field" name="callsign" required>
+                                                    <input type="text" id="callsign1111" class="form-control callsign-field" name="callsign" required>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
@@ -124,11 +124,18 @@
                                                 <div class="col-md-7">
                                                     <input type="hidden" name="callsignCheckbox" value="0">
                                                     <label>
-                                                        <input type="checkbox" id="1overflyformstep1-callsigncheckbox" class="callsign-checkbox" name="callsignCheckbox" value="1"> Same as Aircraft Registration</label>
+                                                        <input type="checkbox" id="callsignCheckbox" class="callsign-checkbox" name="callsignCheckbox" value="1" onclick="change1()"> Same as Aircraft Registration</label>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <script type="text/javascript">
+                                            function change1()
+                                            {
+                                                $('#callsign1111').val($('#aircraftRegistration').val());
+                                            }
+                                        </script>
 
                                         <div class="text-checkbox-group">
                                             <div class="form-group field-overflyformstep1-tripreferenceno">
@@ -136,7 +143,7 @@
                                                     <label class="control-label" for="overflyformstep1-tripreferenceno">Trip Reference No.</label>
                                                 </div>
                                                 <div class="col-md-7">
-                                                    <input type="text" id="1overflyformstep1-tripreferenceno" class="form-control trip-ref-text" name="tripReferenceNo">
+                                                    <input type="text" id="tripReferenceNo" class="form-control trip-ref-text" name="tripReferenceNo">
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
@@ -145,11 +152,18 @@
                                                 <div class="col-md-7">
                                                     <input type="hidden" name="tripRefCheckbox" value="0">
                                                     <label>
-                                                        <input type="checkbox" id="1overflyformstep1-triprefcheckbox" class="trip-ref-checkbox" name="tripRefCheckbox" value="1"> Same as Call Sign</label>
+                                                        <input type="checkbox" id="1overflyformstep1-triprefcheckbox" class="trip-ref-checkbox" name="tripRefCheckbox" value="1" onclick="change2()"> Same as Call Sign</label>
                                                     <div class="help-block"></div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <script type="text/javascript">
+                                            function change2()
+                                            {
+                                                $('#tripReferenceNo').val($('#callsign1111').val());
+                                            }
+                                        </script>
 
                                         <div class="form-group field-overflyformstep1-aircrafttype required">
                                             <div class="col-md-3 pod-label-text-right">
@@ -413,21 +427,23 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-5 custom-placeholder">
+                                        <div class="col-md-offset-2 col-md-6 custom-placeholder">
                                             <div class="form-group field-overflyformstep1-depfrom required">
                                                 <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
-                                                <select id="1overflyformstep1-depfrom" class="form-control" name="depFrom" placeholder="ICAO" required>
-                                                    <option value="">Select</option>
-                                                    <option value="1">Option 1</option>
-                                                    <option value="2">Option 2</option>
-                                                   
-                                                </select>
-
-                                                <div class="help-block"></div>
+                                                
+                                                <input type="text" id="depFrom" class="form-control" placeholder="Search...">
                                             </div>
                                         </div>
 
+                                        <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                            
+                                            <select id="airport-list" name="depFrom" style="display: none;" class="form-control icao-dropdown">
+                                                
+                                            </select>
+
+                                            <button style="display: none;" id="add-airport" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -443,28 +459,33 @@
                                             <div class="form-group field-overflyformstep1-etautc required">
                                                 <label class="control-label" for="overflyformstep1-etautc">ETA UTC</label>
                                                 <input type="text" id="1overflyformstep1-etautc" class="form-control timepicker text-center" name="etaUtc" readonly="" required>
-
-                                                <div class="help-block"></div>
                                             </div>
 
                                         </div>
                                     </div>
+                                    
 
                                     <div class="row">
-                                        <div class="col-md-5 custom-placeholder">
-                                            <div class="form-group field-overflyformstep1-arrto required">
-                                                <label class="control-label" for="overflyformstep1-arrto">Aerodrome of Destination</label>
-                                                <div class="kv-plugin-loading loading-overflyformstep1-arrto">&nbsp;</div>
-                                                <select id="1overflyformstep1-arrto" class="form-control" name="arrTo" placeholder="ICAO" required>
-                                                    <option value="">Select</option>
-                                                    <option value="1">Option 1</option>
-                                                    <option value="2">Option 2</option>
-                                                </select>
-
-                                                <div class="help-block"></div>
+                                        <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                            <div class="form-group field-overflyformstep1-depfrom required">
+                                                <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Destination</label>
+                                                <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
+                                                
+                                                <input type="text" id="arrTo" class="form-control" placeholder="Search...">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-offset-2 col-md-6 custom-placeholder">
+                                            
+                                            <select id="airport-list2" name="arrTo" style="display: none;" class="form-control icao-dropdown">
+                                                
+                                            </select>
+
+                                            <button style="display: none;" id="add-airport2" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#airport-create-modal">Add Airport</button>
+                                        </div>
                                     </div>
+
+                                    
 
                                     <div class="row">
                                         <div class="col-md-5">
@@ -542,173 +563,9 @@
 
         </div>
     </div>
-
-    <div id="operator-create-modal" class="fade modal" role="dialog" tabindex="-1" style="margin-left: 15%; margin-top: 20px">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h1 class="page-title" style="margin:5px;">Add New Operator</h1>
-                        </div>
-                        <div class="modal-body">
-                            <div id="operator-create-modal-content">
-                                <!--NEW-->
-                                <form id="operator-create-ajax" action="{{route('operators.store')}}" method="post">
-        {{ csrf_field() }}
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-name required">
-                    <label class="control-label" for="operatorform-name">Name</label>
-                    <input id="operatorform-name" class="form-control input-field" name="name" aria-required="true" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-email required">
-                    <label class="control-label" for="operatorform-email">Email</label>
-                    <input id="operatorform-email" class="form-control input-field" name="email" maxlength="" type="email">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-address_line_1 required">
-                    <label class="control-label" for="operatorform-address_line_1">Billing Address Line 1</label>
-                    <input id="operatorform-address_line_1" class="form-control input-field" name="address_line_1" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-address_line_2 required">
-                    <label class="control-label" for="operatorform-address_line_2">Billing Address Line 2</label>
-                    <input id="operatorform-address_line_2" class="form-control input-field" name="address_line_2" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 modal-select2">
-                <div class="form-group field-operatorform-country required">
-                    <label class="control-label" for="operatorform-country">Country</label>
-                    <select id="operatorform-country" class="form-control input-field" name="country_id">
-                        <option value="">Select</option>
-                        @foreach($options as $option)
-                        <option value="{{$option->id}}">{{$option->name}}</option>
-                        @endforeach 
-
-                    </select>
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-6 modal-select2">
-                <div class="form-group field-operatorform-city required">
-                    <label class="control-label" for="operatorform-city">City</label>
-                    <input id="operatorform-business_phone" class="form-control input-field" name="city_id" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-business_phone required">
-                    <label class="control-label" for="operatorform-business_phone">Contact</label>
-                    <input id="operatorform-business_phone" class="form-control input-field" name="business_phone" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-business_phone_extension ">
-                    <label class="control-label" for="operatorform-business_phone_extension">Extension</label>
-                    <input id="operatorform-business_phone_extension" class="form-control input-field" name="business_phone_extension" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-postal_code required">
-                    <label class="control-label" for="operatorform-postal_code">Postal Code</label>
-                    <input id="operatorform-postal_code" class="form-control input-field" name="postal_code" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-fax_number ">
-                    <label class="control-label" for="operatorform-fax_number">Fax Number</label>
-                    <input id="operatorform-fax_number" class="form-control input-field" name="fax_number" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6 modal-select2">
-                <div class="form-group field-operatorform-icao">
-                    <label class="control-label" for="operatorform-icao">Nearest Operating Airport (ICAO)</label>
-                    <select id="operatorform-icao" class="form-control input-field" name="icao">
-
-                    </select>
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-website">
-                    <label class="control-label" for="operatorform-website">Website</label>
-                    <input id="operatorform-website" class="form-control input-field" name="website" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group field-operatorform-comment">
-                    <label class="control-label" for="operatorform-comment">Additional Notes</label>
-                    <input id="operatorform-comment" class="form-control input-field" name="comment" type="text">
-
-                    <div class="help-block"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="error-block">
-
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Add new</button>
-        </div>
-    </form>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    @include('backend.partials._operator-model')
+    @include('backend.partials.airport-model')
     <!-- END CONTENT -->
-
 </div>
 <!-- END CONTENT BODY -->
 

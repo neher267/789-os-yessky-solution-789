@@ -38,11 +38,13 @@ class OverFlyRequestController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $data = new FlightRequest;
         $data->user_id = request()->user()->id;
         $data->type = 'Overfly';
         $data->operator = $request->operatorName;
         $data->billing_add = $request->billingAddress;
+        //$data->operator_id = $request->operator_id;
         $data->aircraft_reg = $request->aircraftRegistration;
         $data->call_sign = $request->callsign;
         $data->trip_ref_no = $request->tripReferenceNo;
@@ -67,7 +69,12 @@ class OverFlyRequestController extends Controller
         $data->fir_out = $request->firOut;
         $data->status = 'pending';
         $data->save();
-        return back()->withSuccess('Success!');
+        
+        $tran_id = $data->id;
+
+        //$tran_id = rand(1,50);
+        $request->session()->put('tran_id', $tran_id);
+        return redirect('dashboard/payment');
     }
 
     /**

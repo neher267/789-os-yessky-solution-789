@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::post('get-operators','AjaxController@get_operators');
+Route::post('get-airports','AjaxController@get_airports');
+
+
 
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['auth']], function() {
 	Route::get('/', 'HomeController@index');
@@ -25,9 +28,11 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	Route::resource('landing-requests', 'LandingRequestController');
 	Route::resource('overfly-requests', 'OverFlyRequestController');		
 	Route::resource('operators', 'OperatorsController');		
+	Route::resource('airports', 'AirportsController');		
 	Route::resource('countries', 'CountriesController');		
 	Route::get('users/customers', 'UserManagementController@customers')->name('users.customers');
 	Route::get('users/admens', 'UserManagementController@admens')->name('users.admens');
+	Route::get('users/moderators', 'UserManagementController@moderators')->name('users.moderators');
 
 
 
@@ -41,9 +46,22 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	// Route::PUT('users/{user}', 'UserManagementController@update_role')->name('users.update.role');
 	Route::DELETE('users/{user}', 'UserManagementController@destroy')->name('users.destroy');
 	//end training
+
+	Route::get('payment', 'PaymentController@create');
+});
+
+Route::group(['prefix'=>'dashboard', 'middleware'=>['auth']], function(){
+	 // SSLCOMMERZ Start
+	Route::POST('pay', 'PublicSslCommerzPaymentController@index');
+ 	Route::POST('success', 'PublicSslCommerzPaymentController@success');
+ 	Route::POST('fail', 'PublicSslCommerzPaymentController@fail');
+ 	Route::POST('cancel', 'PublicSslCommerzPaymentController@cancel');
+ 	Route::POST('ipn', 'PublicSslCommerzPaymentController@ipn');
+	//SSLCOMMERZ END
 });
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

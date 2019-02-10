@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Request as FlightRequest;
 use App\LangingRequest;
+use App\Country;
 
 class LandingRequestController extends Controller
 {
@@ -26,7 +27,8 @@ class LandingRequestController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.landing-request');
+        $options = Country::orderBy('name', 'asc')->get();
+        return view('backend.pages.landing-request', compact('options'));
     }
 
     /**

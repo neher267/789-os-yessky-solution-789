@@ -40,6 +40,11 @@
         .page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {
             background-color: #0e4060;
         }
+
+        .form-wizard .steps>li.active>a.step .number {
+            background-color: #f36a5a;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -85,14 +90,21 @@
     <script src="{{asset('frontend/app.js')}}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
     <!-- neher -->
     <script type="text/javascript">
+
+
+
         $(document).ready(function() {
             $('#operatorname').keyup(function(){   
                 var value = this.value;
                 var body = $("#t-body");
                 if (value.length > 1) {
-                    axios.post('http://sky.test/get-operators', {
+                    axios.post('<?php echo url('get-operators') ?>', {
                         operator: value,
                     })
                     .then(function (response) {                        
@@ -102,7 +114,7 @@
                         if (response.data.length>0) {
                             for (var i = 0; i < response.data.length; i++) {
                                 var id = response.data[i].id+'uniqueid';
-                                aaa+= '<tr> <td id="'+id+'name">'+response.data[i].name+'</td><td id="'+id+'address">'+response.data[i].address_line_1+'</td><td> <button id="'+id+'" class="btn btn-primary btn-xs" type="button" onclick="operator_autocom(id)">Ok</button> </td></tr>';
+                                aaa+= '<tr> <td id="'+id+'name">'+response.data[i].name+'</td><td id="'+id+'address">'+response.data[i].address_line_1+'</td><td> <button id="'+id+'" class="btn btn-primary btn-xs" type="button" onclick="operator_autocom(id, '+response.data[i].id+')">Ok</button> </td></tr>';
                             }
                         } else{
                             aaa+= '<tr><td colspan="3"><button id="'+id+'" class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#operator-create-modal">Add New Operator</button></td></tr>';
@@ -118,13 +130,146 @@
                 }                
             });
 
+
+            $('#depFrom').keyup(function(){   
+                var value = this.value;
+                var body = $("#airport-list");
+                if (value.length > 1) {
+                    axios.post('<?php echo url('get-airports') ?>', {
+                        name: value,
+                    })
+                    .then(function (response) {                        
+                        var aaa = ''
+                        body.html(aaa);
+                        
+                        if (response.data.length>0) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                var id = response.data[i].id+'uniqueid';                               
+
+                                aaa+= '<option value="'+id+'">'+response.data[i].name+'</option>';
+                            }
+                            
+                            body.html(aaa);
+                            $("#airport-list").css({"display":"block"});
+                            $("#add-airport").css({"display":"none"});
+                        } else{   
+                            $("#airport-list").css({"display":"none"});
+                            $("#add-airport").css({"display":"block"});                      
+                        }                        
+                        //console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }                
+            });
+
+            $('#goingDepFrom').keyup(function(){   
+                var value = this.value;
+                var body = $("#airport-list3");
+                if (value.length > 1) {
+                    axios.post('<?php echo url('get-airports') ?>', {
+                        name: value,
+                    })
+                    .then(function (response) {                        
+                        var aaa = ''
+                        body.html(aaa);
+                        
+                        if (response.data.length>0) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                var id = response.data[i].id+'uniqueid';                               
+
+                                aaa+= '<option value="'+id+'">'+response.data[i].name+'</option>';
+                            }
+                            
+                            body.html(aaa);
+                            $("#airport-list3").css({"display":"block"});
+                            $("#add-airport3").css({"display":"none"});
+                        } else{   
+                            $("#airport-list3").css({"display":"none"});
+                            $("#add-airport3").css({"display":"block"});                      
+                        }                        
+                        //console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }                
+            });
+
+            $('#arrTo').keyup(function(){   
+                var value = this.value;
+                var body = $("#airport-list2");
+                if (value.length > 1) {
+                    axios.post('<?php echo url('get-airports') ?>', {
+                        name: value,
+                    })
+                    .then(function (response) {                        
+                        var aaa = ''
+                        body.html(aaa);
+                        
+                        if (response.data.length>0) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                var id = response.data[i].id+'uniqueid';                               
+
+                                aaa+= '<option value="'+id+'">'+response.data[i].name+'</option>';
+                            }
+                            
+                            body.html(aaa);
+                            $("#airport-list2").css({"display":"block"});
+                            $("#add-airport2").css({"display":"none"});
+                        } else{   
+                            $("#airport-list2").css({"display":"none"});
+                            $("#add-airport2").css({"display":"block"});                      
+                        }                        
+                        //console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }                
+            });
+
+            $('#goingArrTo').keyup(function(){   
+                var value = this.value;
+                var body = $("#airport-list4");
+                if (value.length > 1) {
+                    axios.post('<?php echo url('get-airports') ?>', {
+                        name: value,
+                    })
+                    .then(function (response) {                        
+                        var aaa = ''
+                        body.html(aaa);
+                        
+                        if (response.data.length>0) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                var id = response.data[i].id+'uniqueid';                               
+
+                                aaa+= '<option value="'+id+'">'+response.data[i].name+'</option>';
+                            }
+                            
+                            body.html(aaa);
+                            $("#airport-list4").css({"display":"block"});
+                            $("#add-airport4").css({"display":"none"});
+                        } else{   
+                            $("#airport-list4").css({"display":"none"});
+                            $("#add-airport4").css({"display":"block"});                      
+                        }                        
+                        //console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }                
+            });
+
         });
 
-    </script>
+    </script>    
 
     <script type="text/javascript">
         
-        function operator_autocom(id)
+        function operator_autocom(id, oppid)
         {
             $('#operatorname').val($('#'+id+'name').html());
             $('#billingaddress').html($('#'+id+'address').html());

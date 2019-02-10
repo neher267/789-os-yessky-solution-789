@@ -3,6 +3,9 @@
 <div class="page-content">
 
     <!-- BEGIN CONTENT -->
+    @include('backend.partials.flash')
+    @include('backend.partials.errors')
+    
     <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
@@ -16,9 +19,7 @@
                         <tr>
                             <th>Sr.No</th>
                             <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Address 1</th>
+                            <th>Address Line 1</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -29,11 +30,13 @@
                             <tr>
                                 <td>{{++$i}}</td>
                                 <td>{{$result->name}}</td>
-                                <td>{{$result->business_phone}}</td>
-                                <td>{{$result->email}}</td>
                                 <td>{{$result->address_line_1}}</td>
                                 <td>
-                                    @if(Auth::user()->role == 'admen')
+                                    @if($result->created_by == Auth::user()->id)
+                                    <a class="btn btn-success btn-xs" href="{{route('operators.edit', $result)}}"><i class="fa fa-edit"></i> Edit </a>
+                                    @endif
+
+                                    @if(Auth::user()->role == 'admen' || Auth::user()->role == 'super-admen')
                                     <form action="{{route('operators.destroy', $result)}}" method="POST" style="display: inline;">
                                         {{ csrf_field() }} {{ method_field('DELETE') }}
 

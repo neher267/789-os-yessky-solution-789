@@ -41,24 +41,24 @@ class OperatorsController extends Controller
      */
     public function store(OperatorFormRequest $request)
     {
-        //dd($request->all())
-        $data = new Operator;
-        $data->country_id = $request->country_id;
-        $data->created_by = auth()->user()->id;
-        $data->city_id = $request->city_id;
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->address_line_1 = $request->address_line_1;
-        $data->address_line_2 = $request->address_line_2;
-        $data->business_phone = $request->business_phone;
-        $data->postal_code = $request->postal_code;            
-        $data->business_phone_extension = $request->business_phone_extension;
-        $data->fax_number = $request->fax_number;
-        $data->icao = $request->icao;
-        $data->website = $request->website;
-        $data->comment = $request->comment;
-        $data->save();
-        return back()->withSuccess("Create Success");
+        //dd($request->all());
+        $operator = new Operator;
+        $operator->country_id = $request->country_id;
+        $operator->created_by = auth()->user()->id;
+        $operator->city_id = $request->city_id;
+        $operator->name = $request->name;
+        $operator->email = $request->email;
+        $operator->address_line_1 = $request->address_line_1;
+        $operator->address_line_2 = $request->address_line_2;
+        $operator->business_phone = $request->business_phone;
+        $operator->postal_code = $request->postal_code;            
+        $operator->business_phone_extension = $request->business_phone_extension;
+        $operator->fax_number = $request->fax_number;
+        //$operator->icao = $request->icao;
+        $operator->website = $request->website;
+        $operator->comment = $request->comment;
+        $operator->save();
+        return back()->withSuccess("Create Success!");
     }
 
     /**
@@ -78,9 +78,18 @@ class OperatorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Operator $operator)
     {
-        //
+        $options = Country::orderBy('name', 'asc')->get();
+        $page_title = 'Edit Operator';
+
+        if (auth()->user()->id == $operator->created_by){
+            return view('backend.pages.operators.edit', compact('operator','page_title', 'options'));
+        }
+        else{
+            return redirect('dashboard/operators')->withSuccess('Unauthorized!');
+        }
+        
     }
 
     /**
@@ -90,9 +99,23 @@ class OperatorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Operator $operator)
     {
-        //
+        $operator->country_id = $request->country_id;
+        $operator->city_id = $request->city_id;
+        $operator->name = $request->name;
+        $operator->email = $request->email;
+        $operator->address_line_1 = $request->address_line_1;
+        $operator->address_line_2 = $request->address_line_2;
+        $operator->business_phone = $request->business_phone;
+        $operator->postal_code = $request->postal_code;            
+        $operator->business_phone_extension = $request->business_phone_extension;
+        $operator->fax_number = $request->fax_number;
+        $operator->icao = $request->icao;
+        $operator->website = $request->website;
+        $operator->comment = $request->comment;
+        $operator->save();
+        return redirect('dashboard/operators')->withSuccess("Update Success");
     }
 
     /**

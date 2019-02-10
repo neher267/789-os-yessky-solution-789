@@ -38,12 +38,12 @@
                         </tr>                        
                     </tbody>
                 </table>
-                <div>
+                <!-- <div>
                     <a class="btn btn-success" href="/client/profile/update">Update Profile</a> &nbsp;
                     <a class="btn btn-danger" href="/client/profile/change-password">Change Password</a> 
-                </div>
+                </div> -->
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div class="text-center">
                     <h4>Organization Information</h4>
                 </div>
@@ -110,7 +110,7 @@
                 <p>
                     <a class="btn btn-success" href="/client/profile/update-organization">Update Organization</a> 
                 </p>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- END CONTENT -->
