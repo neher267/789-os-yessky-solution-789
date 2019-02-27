@@ -12,8 +12,7 @@ class PublicSslCommerzPaymentController extends Controller
 {
     public function index(Request $request) 
     {
-        dd($request->session()->has('tran_id'));
-        
+        //dd($request->session()->has('tran_id'));
         if(!$request->session()->has('tran_id'))
         {
             return back();

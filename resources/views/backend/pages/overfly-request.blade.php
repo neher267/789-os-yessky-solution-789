@@ -333,9 +333,9 @@
                                                 <input type="hidden" name="dangerGoods" value="">
                                                 <div id="1overflyformstep1-dangergoods" class="danger-goods-radio-list inline-list2" style="margin-top:6px;" required>
                                                     <label>
-                                                        <input type="radio" name="dangerGoods" value="1"> Yes</label>
+                                                        <input type="radio" name="dangerGoods" value="1" required> Yes</label>
                                                     <label>
-                                                        <input type="radio" name="dangerGoods" value="0"> No</label>
+                                                        <input type="radio" name="dangerGoods" value="0" required> No</label>
                                                 </div>
                                                 <div class="help-block"></div>
                                             </div>
@@ -411,7 +411,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-depdate required">
                                                 <label class="control-label" for="overflyformstep1-depdate">Departure Date</label>
-                                                <input type="text" id="1overflyformstep1-depdate" class="datepicker text-center dep-date_0 emergency-calc_0 form-control krajee-datepicker" name="depDate" readonly required>
+                                                <input type="text" id="1overflyformstep1-depdate" class="datepicker text-center dep-date_0 emergency-calc_0 form-control krajee-datepicker" name="depDate" required>
 
                                                 <div class="help-block"></div>
                                             </div>
@@ -420,7 +420,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-etdutc required">
                                                 <label class="control-label" for="overflyformstep1-etdutc">ETD UTC</label>
-                                                <input type="text" id="1overflyformstep1-etdutc" class="form-control timepicker text-center dep-time_0 emergency-calc_0 disabled-input2" name="etdUtc" readonly="" required>
+                                                <input type="text" id="1overflyformstep1-etdutc" class="form-control timepicker text-center dep-time_0 emergency-calc_0 disabled-input2" name="etdUtc" required>
 
                                                 <div class="help-block"></div>
                                             </div>
@@ -432,7 +432,7 @@
                                                 <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
                                                 
-                                                <input type="text" id="depFrom" class="form-control" placeholder="Search...">
+                                                <input type="text" id="depFrom" class="form-control" placeholder="Search..." required>
                                             </div>
                                         </div>
 
@@ -450,7 +450,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-arrdate required">
                                                 <label class="control-label" for="overflyformstep1-arrdate">Arrival Date</label>
-                                                <input type="text" id="1overflyformstep1-arrdate" class="text-center form-control datepicker" name="arrDate" readonly="" required>
+                                                <input type="text" id="1overflyformstep1-arrdate" class="text-center form-control datepicker" name="arrDate" required>
 
                                                 <div class="help-block"></div>
                                             </div>
@@ -458,7 +458,7 @@
                                         <div class="col-md-5">
                                             <div class="form-group field-overflyformstep1-etautc required">
                                                 <label class="control-label" for="overflyformstep1-etautc">ETA UTC</label>
-                                                <input type="text" id="1overflyformstep1-etautc" class="form-control timepicker text-center" name="etaUtc" readonly="" required>
+                                                <input type="text" id="1overflyformstep1-etautc" class="form-control timepicker text-center" name="etaUtc" required>
                                             </div>
 
                                         </div>
@@ -471,7 +471,7 @@
                                                 <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Destination</label>
                                                 <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
                                                 
-                                                <input type="text" id="arrTo" class="form-control" placeholder="Search...">
+                                                <input type="text" id="arrTo" class="form-control" placeholder="Search..." required>
                                             </div>
                                         </div>
 

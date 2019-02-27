@@ -515,7 +515,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group field-legform3-depdate1 required">
                                                         <label class="control-label" for="legform3-depdate1">Departure Date</label>
-                                                        <input type="text" id="legform3-depdate1" class="text-center depDate-field form-control datepicker" name="depDate" readonly aria-required="true">
+                                                        <input type="text" id="legform3-depdate1" class="text-center depDate-field form-control datepicker" name="depDate" required>
 
                                                         <div class="help-block"></div>
                                                     </div>
@@ -536,7 +536,7 @@
                                                         <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
                                                         <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
                                                         
-                                                        <input type="text" id="depFrom" class="form-control" placeholder="Search...">
+                                                        <input type="text" id="depFrom" class="form-control" placeholder="Search..." required>
                                                     </div>
                                                 </div>
 
@@ -554,7 +554,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group field-legform3-arrdate1 required">
                                                         <label class="control-label" for="legform3-arrdate1">Arrival Date</label>
-                                                        <input type="text" id="legform3-arrdate1" class="text-center form-control datepicker" name="arrDate" readonly required>
+                                                        <input type="text" id="legform3-arrdate1" class="text-center form-control datepicker" name="arrDate" required>
 
                                                         <div class="help-block"></div>
                                                     </div>
@@ -599,7 +599,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group field-legform3-depdate2 required">
                                                         <label class="control-label" for="legform3-depdate">Departure Date</label>
-                                                        <input type="text" id="legform3-depdate" class="form-control datepicker" name="goingDepDate" required readonly>
+                                                        <input type="text" id="legform3-depdate" class="form-control datepicker" name="goingDepDate" required>
                                                         <div class="help-block"></div>
                                                     </div>
                                                 </div>
@@ -619,7 +619,7 @@
                                                         <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Departure</label>
                                                         <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
                                                         
-                                                        <input type="text" id="goingDepFrom" class="form-control" placeholder="Search...">
+                                                        <input type="text" id="goingDepFrom" class="form-control" placeholder="Search..." required>
                                                     </div>
                                                 </div>
 
@@ -637,7 +637,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group field-legform3-arrdate2 required">
                                                         <label class="control-label" for="legform3-arrdate">Arrival Date</label>
-                                                        <input type="text" id="legform3-arrdate" class="form-control datepicker" name="goingArrDate" required readonly>
+                                                        <input type="text" id="legform3-arrdate" class="form-control datepicker" name="goingArrDate" required>
 
                                                         <div class="help-block"></div>
                                                     </div>
@@ -658,7 +658,7 @@
                                                         <label class="control-label" for="overflyformstep1-depfrom">Aerodrome of Destination</label>
                                                         <div class="kv-plugin-loading loading-overflyformstep1-depfrom">&nbsp;</div>
                                                         
-                                                        <input type="text" id="goingArrTo" class="form-control" placeholder="Search...">
+                                                        <input type="text" id="goingArrTo" class="form-control" placeholder="Search..." required>
                                                     </div>
                                                 </div>
 

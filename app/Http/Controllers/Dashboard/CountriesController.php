@@ -44,6 +44,7 @@ class CountriesController extends Controller
         $data->name = $request->name;
         $data->short_name = $request->short_name;
         $data->continent_id = $request->continent_id;
+        dd($data);
         $data->save();
         return back()->withSuccess('Success');
     }

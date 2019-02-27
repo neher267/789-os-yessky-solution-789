@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('repleace', 'PublicController@repleace');
+
 Route::get('/', function () {
     return view('welcome');
 });
