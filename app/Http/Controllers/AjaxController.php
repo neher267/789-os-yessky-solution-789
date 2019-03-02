@@ -20,7 +20,7 @@ class AjaxController extends Controller
     public function get_airports(Request $request)
     {
     	$operators = DB::table('airports')
-                ->select('id','name','address')   
+                ->select('id','name')   
       			->orWhere('name', 'like', '%' . $request->name . '%')->get();
         return $operators;
     }

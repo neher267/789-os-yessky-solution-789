@@ -9,20 +9,19 @@ class PublicController extends Controller
 	public $str;
 	public function __construct()
 	{
-		$this->str = file_get_contents(asset('airlines.txt'));
+		$this->str = file_get_contents(asset('airports.txt'));
 	}
 
     public function repleace()
     {
     	$countries = \App\Country::get();
 		$countries->each(function($country){
-			$oldMessage = '4,"'.$country->name.'"';
-			$deletedFormat = "4,$country->id";
-			$this->str=str_replace($oldMessage, $deletedFormat,$this->str);
+			$this->str=str_replace($country->name, $country->id,$this->str);
 		});
 
 		dd($this->str);
 
 		//file_put_contents(asset('airlines.txt'), $this->str);
     }
+
 }
