@@ -12,6 +12,7 @@
 */
 
 Route::get('repleace', 'PublicController@repleace');
+Route::get('email-test', 'EmailTest@send');
 
 Route::get('/', function () {
     return view('welcome');
