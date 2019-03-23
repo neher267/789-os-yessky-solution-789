@@ -7,6 +7,7 @@ use Session;
 use Illuminate\Routing\UrlGenerator;
 use App\Http\Controllers;
 use App\Order;
+use Mail;
 session_start();
 class PublicSslCommerzPaymentController extends Controller
 {
@@ -38,13 +39,13 @@ class PublicSslCommerzPaymentController extends Controller
         $post_data['fail_url'] = $server_name . "fail";
         $post_data['cancel_url'] = $server_name . "cancel";
         # CUSTOMER INFORMATION
-        // $post_data['cus_name'] = $request->user()->name;
-        // $post_data['cus_email'] = $request->user()->email;
+        $post_data['cus_name'] = $request->user()->name;
+        $post_data['cus_email'] = $request->user()->email;
         // $post_data['cus_add1'] = '';
 
-        $post_data['cus_name'] = 'NayemSayed';
-        $post_data['cus_email'] = 'cmsayed@gmail.com';
-        $post_data['cus_add1'] = '93 B Eskaton';
+        // $post_data['cus_name'] = 'NayemSayed';
+        // $post_data['cus_email'] = 'cmsayed@gmail.com';
+        $post_data['cus_add1'] = '';
 
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
@@ -93,10 +94,47 @@ class PublicSslCommerzPaymentController extends Controller
         $data->save();
     }
 
+    private function sendEmail($tran_id)
+    {
+        $user = request()->user();
+
+        $data = array();
+        $data['to'] = $user->email;
+        $data['name'] = $user->name;
+        $data['subject'] = 'Payment Confirmation';
+        $data['body'] = 'Thank you for your payment. Your transaction id is '.$tran_id;
+        
+        Mail::send('mail.template', $data, function($message) use ($data){
+            $message->from('jhonbaker404@gmail.com', 'Sky Solution');
+            $message->to($data['to']);
+            $message->subject($data['subject']);
+        });
+    }
+
+    private function sendEmailFail()
+    {
+        $request->session()->forget('tran_id');
+        $user = request()->user();
+
+        $data = array();
+        $data['to'] = $user->email;
+        $data['name'] = $user->name;
+        $data['subject'] = 'Payment Faied';
+        $data['body'] = 'Sorry, Your Payment is not complete. Please try again!';
+        
+        Mail::send('mail.template', $data, function($message) use ($data){
+            $message->from('jhonbaker404@gmail.com', 'Sky Solution');
+            $message->to($data['to']);
+            $message->subject($data['subject']);
+        });
+    }
+
 
     public function success(Request $request) 
     {
-        //dd($request->all());
+        $request->session()->forget('tran_id');
+
+        ////dd($request->all());
         //echo "Transaction is Successful";
         $sslc = new SSLCommerz();
         #Start to received these value from session. which was saved in index function.
@@ -105,6 +143,7 @@ class PublicSslCommerzPaymentController extends Controller
         #End to received these value from session. which was saved in index function.
         #Check order status in order tabel against the transaction id or order id.
         $order_detials = Order::where('order_id', $tran_id)->first();
+        //dd($order_detials);
         if ($order_detials) {
             if($order_detials->order_status=='Pending'){
                 $validation = $sslc->orderValidate(
@@ -113,9 +152,7 @@ class PublicSslCommerzPaymentController extends Controller
                     $order_detials->currency,
                     $request->all());
 
-                //Hash validation failed
-
-                //dd($validation);
+                //Hash validation failed                
 
                 if($validation == TRUE) {
                     /*
@@ -126,6 +163,9 @@ class PublicSslCommerzPaymentController extends Controller
                     $update_product = DB::table('orders')
                                 ->where('order_id', $tran_id)
                                 ->update(['order_status' => 'Processing']);
+
+                    $this->sendEmail($tran_id);
+
                     return view('backend.pages.payment.success')->withSuccess('Transaction is successfully Complete'); 
                 } else {
                     //dd('validation false');
@@ -145,6 +185,9 @@ class PublicSslCommerzPaymentController extends Controller
                  That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
                  */
                 //echo "Transaction is successfully Complete";
+                 
+
+
                 return view('backend.pages.payment.success')->withSuccess('Transaction is successfully Complete'); 
 
             }
@@ -159,9 +202,10 @@ class PublicSslCommerzPaymentController extends Controller
     }
 
 
-
     public function fail(Request $request) 
     {
+        $this->sendEmailFail();
+
         $tran_id = $_SESSION['payment_values']['tran_id'];
         $order_detials = DB::table('orders')
                             ->where('order_id', $tran_id)

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Request as FlightRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Request as PermitRequest;
 
 class HomeController extends Controller
 {
@@ -32,4 +33,9 @@ class HomeController extends Controller
         
         return view('backend.pages.status', compact('results', 'status'));    	
     }    
+
+    public function permit_request_show(PermitRequest $request)
+    {
+        return view('backend.pages.request-view', compact('request'));   
+    }
 }

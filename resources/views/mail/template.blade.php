@@ -1,5 +1,16 @@
-<h2>This is Message Details.</h2>
+<P>
+	<strong>
+		Dear {{$name}}, 
+	</strong>
+</P>
 
 <p>{{$body}}</p>
 
-<h3>Thank You</h3>
+<P>
+	<strong>
+		Sky Solution Ltd
+	</strong>
+</P>
+
+<p>Dhaka, Bangladesh</p>
+<p>Phone: +88038474</p>

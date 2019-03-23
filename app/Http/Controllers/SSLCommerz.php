@@ -1,11 +1,12 @@
 <?php
 namespace App\Http\Controllers;
-// local
-// define("SSLCZ_STORE_ID", "SkySolution@ssl");
-// define("SSLCZ_STORE_PASSWD", "skyso5c1dd8f4c7321@ssl");
 /*live*/
 define("SSLCZ_STORE_ID", "skysolutionbdlive");
 define("SSLCZ_STORE_PASSWD", "5C5929B1D31EA34712");
+
+/*local*/
+// define("SSLCZ_STORE_ID", "skyso5c1dd8f4c7321");
+// define("SSLCZ_STORE_PASSWD", "skyso5c1dd8f4c7321@ssl");
 
 # IF SANDBOX TRUE, THEN IT WILL CONNECT WITH SSLCOMMERZ SANDBOX (TEST) SYSTEM
 define("SSLCZ_IS_SANDBOX", false);
@@ -303,13 +304,13 @@ class SSLCommerz
                 curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
                 if (SSLCZ_IS_LOCAL_HOST) 
                 {
-                    dump('SSLCZ_IS_LOCAL_HOST');
+                    //dump('SSLCZ_IS_LOCAL_HOST');
                     curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
                     curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
                 } 
                 else 
                 {
-                    dump('!SSLCZ_IS_LOCAL_HOST');
+                    //dump('!SSLCZ_IS_LOCAL_HOST');
                     curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, 2);// Its default value is now 2
                     curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, true);
                 }

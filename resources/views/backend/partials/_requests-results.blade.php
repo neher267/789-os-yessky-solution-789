@@ -28,7 +28,7 @@
                         <th>Callsign</th>
                         <!--                        <th>Progress</th>-->
                         <th>Status</th>
-                        <th style="width: {{Auth::user()->role == 'admen' ? "185px":"auto"}}">Actions</th>
+                        <th style="width: 200px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,7 +69,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="#" class="btn btn-sm btn-outline grey-salsa" style="margin-right: 0px;">
+                            <a href="{{route('permit.request.show',$result)}}" class="btn btn-sm btn-default" style="margin-right: 0px;" target="_blank">
                                 <i class="fa fa-search"></i> View
                             </a>
                             @if(Auth::user()->role == 'admen')
@@ -78,7 +78,7 @@
                                 {{ csrf_field() }}    
                                 {{ method_field('PUT') }}    
 
-                                <select name="status" class="form-control change-status" style="width: 116px;" required>
+                                <select name="status" class="form-control change-status" style="width: 116px; height: 30px" required>
                                     <option value="">Edit Status</option>
                                     <option value="approved">Approve</option>
                                     <option value="cancelled">Cancel</option>                                    

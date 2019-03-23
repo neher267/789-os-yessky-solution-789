@@ -60,7 +60,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-money"></i>
                     <span class="title">Payment</span>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             @endif 
 
             @if(Auth::user()->role == 'super-admen')

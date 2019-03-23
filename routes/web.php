@@ -27,6 +27,7 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	Route::get('/', 'HomeController@index');
 	Route::get('contact-us', 'HomeController@contact');
 	Route::get('permit-request/{status}', 'HomeController@request_status');
+	Route::get('permit-request/{request}/show', 'HomeController@permit_request_show')->name('permit.request.show');
 	Route::resource('payments', 'PaymentController');
 	Route::resource('landing-requests', 'LandingRequestController');
 	Route::resource('overfly-requests', 'OverFlyRequestController');		

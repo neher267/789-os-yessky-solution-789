@@ -41,6 +41,7 @@ class LandingRequestController extends Controller
     {
         $data = new FlightRequest;
         $data->type = 'Landing';   //Overfly; Landing
+        $data->user_id = request()->user()->id;
         $data->operator = $request->operatorName;
         $data->billing_add = $request->billingAddress;
         $data->aircraft_reg = $request->aircraftRegistration;
@@ -65,11 +66,17 @@ class LandingRequestController extends Controller
         $data->aerodrome_of_estination = $request->arrTo;
         $data->fir_in = $request->firIn;
         $data->fir_out = $request->firOut;
+        $data->status = 'pending';
         $data->save();
+
+        $tran_id = $data->id;
+
+        //$tran_id = rand(1,50);
+        $request->session()->put('tran_id', $tran_id);
 
         $this->addAdditionalData($data->id, $request);
 
-        return back()->withSuccess("Success!");
+        return redirect('dashboard/payment');
 
     }
 
