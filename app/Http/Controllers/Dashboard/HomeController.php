@@ -38,4 +38,9 @@ class HomeController extends Controller
     {
         return view('backend.pages.request-view', compact('request'));   
     }
+
+    public function terms_and_conditions()
+    {
+        return view('backend.pages.terms-and-conditions');  
+    }
 }

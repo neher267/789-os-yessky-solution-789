@@ -26,6 +26,7 @@ Route::post('get-airports','AjaxController@get_airports');
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['auth']], function() {
 	Route::get('/', 'HomeController@index');
 	Route::get('contact-us', 'HomeController@contact');
+	Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 	Route::get('permit-request/{status}', 'HomeController@request_status');
 	Route::get('permit-request/{request}/show', 'HomeController@permit_request_show')->name('permit.request.show');
 	Route::resource('payments', 'PaymentController');
