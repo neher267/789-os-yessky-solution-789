@@ -25,10 +25,9 @@ class AirportFormRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:operators|max:191',
-            'address' => 'required|max:191',
+            'icao' => 'required|max:20|min:3',
             'country_id' => 'required|max:10',
-            'city' => 'required|max:50',
-            'info' => 'nullable|string',
+            'city' => 'required|max:50|min:3',
         ];
     }
 }

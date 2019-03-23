@@ -6,7 +6,7 @@
 
     <!-- BEGIN CONTENT -->
     <hr>
-    <h1 class="page-title" style="text-transform: capitalize; text-align: center;">{{$page_title}}</h1>
+    <h1 class="page-title" style="text-transform: capitalize; text-align: center; font-weight: bold;">{{$page_title}}</h1>
 
     <div class="clearfix"></div>
 
@@ -26,8 +26,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group field-operatorform-address_line_1 required">
-                    <label class="control-label" for="operatorform-address_line_1">Address</label>
-                    <input id="operatorform-address_line_1" class="form-control input-field" name="address" type="text" value="{{$airport->address}}">
+                    <label class="control-label" for="icao">ICAO</label>
+                    <input id="icao" class="form-control input-field" name="icao" type="text" value="{{$airport->icao}}">
                 </div>
             </div>
         </div>
@@ -50,17 +50,6 @@
                 <div class="form-group field-operatorform-city">
                     <label class="control-label" for="operatorform-city">City</label>
                     <input id="operatorform-business_phone" class="form-control input-field" name="city" type="text"  value="{{$airport->city}}">
-                </div>
-            </div>
-        </div>       
-
-        
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group field-operatorform-comment">
-                    <label class="control-label" for="operatorform-comment">Additional Notes</label>
-                    <textarea  id="operatorform-comment" class="form-control input-field" name="info">{{$airport->info}}</textarea>
                 </div>
             </div>
         </div>

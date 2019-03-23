@@ -45,18 +45,10 @@ class OperatorsController extends Controller
         $operator = new Operator;
         $operator->country_id = $request->country_id;
         $operator->created_by = auth()->user()->id;
-        $operator->city_id = $request->city_id;
         $operator->name = $request->name;
-        $operator->email = $request->email;
-        $operator->address_line_1 = $request->address_line_1;
-        $operator->address_line_2 = $request->address_line_2;
-        $operator->business_phone = $request->business_phone;
-        $operator->postal_code = $request->postal_code;            
-        $operator->business_phone_extension = $request->business_phone_extension;
-        $operator->fax_number = $request->fax_number;
-        //$operator->icao = $request->icao;
-        $operator->website = $request->website;
-        $operator->comment = $request->comment;
+        $operator->address_line_1 = $request->address_line_1; 
+        $operator->icao = $request->icao;
+        $operator->callsign = $request->callsign;
         $operator->save();
         return back()->withSuccess("Create Success!");
     }
@@ -102,18 +94,10 @@ class OperatorsController extends Controller
     public function update(Request $request, Operator $operator)
     {
         $operator->country_id = $request->country_id;
-        $operator->city_id = $request->city_id;
         $operator->name = $request->name;
-        $operator->email = $request->email;
         $operator->address_line_1 = $request->address_line_1;
-        $operator->address_line_2 = $request->address_line_2;
-        $operator->business_phone = $request->business_phone;
-        $operator->postal_code = $request->postal_code;            
-        $operator->business_phone_extension = $request->business_phone_extension;
-        $operator->fax_number = $request->fax_number;
         $operator->icao = $request->icao;
-        $operator->website = $request->website;
-        $operator->comment = $request->comment;
+        $operator->callsign = $request->callsign;
         $operator->save();
         return redirect('dashboard/operators')->withSuccess("Update Success");
     }

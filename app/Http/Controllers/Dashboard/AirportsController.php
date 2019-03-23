@@ -47,8 +47,7 @@ class AirportsController extends Controller
         $airport->created_by = auth()->user()->id;
         $airport->name = $request->name;
         $airport->city = $request->city;
-        $airport->address = $request->address;
-        $airport->info = $request->info;
+        $airport->icao = $request->icao;
         $airport->save();
         return back()->withSuccess("Create Success!");
     }
@@ -96,8 +95,7 @@ class AirportsController extends Controller
         $airport->country_id = $request->country_id;
         $airport->name = $request->name;
         $airport->city = $request->city;
-        $airport->address = $request->address;
-        $airport->info = $request->info;
+        $airport->icao = $request->icao;
         $airport->save();
         return redirect('dashboard/airports')->withSuccess("Update Success");
     }
