@@ -34,6 +34,7 @@
                                 <td>{{$result->short_name}}</td>
                                 <td>{{$result->continet()->first()->name}}</td>
                                 <td>
+                                    @if(Auth::user()->role != 'customer')
                                     <a class="btn btn-success btn-xs" href="{{route('countries.edit', $result)}}"><i class="fa fa-edit"></i> Edit </a>
 
                                     @if(Auth::user()->role == 'admen' || Auth::user()->role == 'super-admen')
@@ -42,6 +43,7 @@
 
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm_user('delete')"><i class="fa fa-trash-o"></i> Delete </button>
                                     </form>
+                                    @endif
                                     @endif
                                 </td>
                             </tr>

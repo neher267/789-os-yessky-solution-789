@@ -14,16 +14,14 @@
                     <span class="title">Dashboard</span>
                     <span class="selected"></span></a>
             </li>
-            @if(Auth::user()->role != 'moderator')            
+
+            <?php $role =  Auth::user()->role; ?>
+
+            @if($role == 'admen' || $role == 'super-admen' || $role == 'customer')            
             <li class="nav-item">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-plane"></i>
-                    <span class="title">Flights Menu</span>
-                    @if(Auth::user()->role == 'admen')
-                    <span class="badge badge-success2" style="margin-right:20px; margin-top:5px;">
-                        {{$pendings->count()}} 
-                    </span>
-                    @endif 
+                    <span class="title">Flights Menu</span>                    
                     <span class="arrow"></span> 
                 </a>
 
@@ -32,50 +30,35 @@
                         <a href="{{url('dashboard/permit-request/pending')}}" class="nav-link ">
                             <i class="fa fa-exclamation-circle"></i>
                             <span class="title">Pending Permits</span>
+
+                            <span class="title" style="color: #1bbc9b; font-weight: bold; background-color: white; border-radius: 50%; padding: 0px 2px;">
+                                {{$pendings}}
+                            </span>
+                            
                         </a>
                     </li>
+
                     <li class="nav-item ">
                         <a href="{{url('dashboard/permit-request/approved')}}" class="nav-link ">
                             <i class="fa fa-check-circle"></i>
                             <span class="title">Approved Permits</span>
+                            <span class="title" style="color: green; font-weight: bold; background-color: white; border-radius: 50%; padding: 0px 2px;">
+                                {{$approved}}
+                            </span>
                         </a>
                     </li>
-                    <li class="nav-item ">
-                        <a href="{{url('dashboard/permit-request/expired')}}" class="nav-link ">
-                            <i class="fa fa-exclamation-circle"></i>
-                            <span class="title">Expired Permits</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item ">
                         <a href="{{url('dashboard/permit-request/cancelled')}}" class="nav-link ">
                             <i class="fa fa-times-circle"></i>
-                            <span class="title">Cancelled/Denied </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="{{url('dashboard/permit-request/draft')}}" class="nav-link ">
-                            <i class="fa fa-refresh"></i>
-                            <span class="title">Drafts</span>
+                            <span class="title">Cancelled</span>
+                            <span class="title" style="color: #e7505a; font-weight: bold; background-color: white; border-radius: 50%; padding: 0px 2px;">
+                                {{$cancelled}}
+                            </span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <!-- <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fa fa-money"></i>
-                    <span class="title">Payment</span>
-
-                    <span class="arrow"></span> </a>
-
-                <ul class="sub-menu">
-                    <li class="nav-item ">
-                        <a href="{{route('payments.index')}}" class="nav-link ">
-                            <i class="fa fa-history"></i>
-                            <span class="title">Payment History</span>
-                        </a>
-                    </li>
-                </ul>
-            </li> -->
             @endif 
 
             @if(Auth::user()->role == 'super-admen')

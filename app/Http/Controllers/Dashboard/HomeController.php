@@ -12,9 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $results = FlightRequest::where('status', 'pending')->latest()->get();
-        $status = 'Pending'; 
-        return view('backend.pages.index', compact('results', 'status'));    	
+        return view('backend.pages.index');    	
     }
     
     public function contact()

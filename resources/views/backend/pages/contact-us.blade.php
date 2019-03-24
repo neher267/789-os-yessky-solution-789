@@ -2,15 +2,15 @@
 <!-- BEGIN CONTENT BODY -->
 <div class="page-content">
 
-    @include('backend.partials._search')
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
     <div class="page-content2 no-sidebar2">
         <div class="ticket-form">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-
-                    <h1 class="page-title text-center2">Contact Us</h1>
+                    <hr>
+                    <h1 class="page-title text-center" style="font-weight: bold;">Contact Us</h1>
+                    <hr>
 
                     <form id="w0" action="contact-us" method="post">
                         <input type="hidden" name="_csrf-client" value="JLabD_D8qFpjql9daDj8QtckkS-L0CYDRuW0xTj2c4xIwNNswr_sEgrHGQ8Haokqj3LZR76KUXYKvOGtbsNF-A==">

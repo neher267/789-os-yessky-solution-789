@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Operator;
 use App\Country;
 use App\Http\Requests\OperatorFormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class OperatorsController extends Controller
 {
@@ -17,7 +18,12 @@ class OperatorsController extends Controller
      */
     public function index()
     {
-        $results = Operator::latest()->get();
+        if(Auth::user()->role == 'customer'){
+            $results = Operator::where('created_by', Auth::id())->latest()->get();
+        } else {
+            $results = Operator::latest()->get();
+        }
+        
         return view('backend.pages.operators.index', compact('results'));
     }
 
