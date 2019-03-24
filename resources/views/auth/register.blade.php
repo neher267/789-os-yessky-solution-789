@@ -12,6 +12,8 @@
                 <div class="panel-heading">Create User</div>
 
                 <div class="panel-body">
+                    @include('backend.partials.errors')
+
                     <div style="width: 100%; text-align: center;">
                         @if (session('success'))
                             <div class="alert alert-success flash" style="color: white; text-transform: capitalize;">
@@ -51,20 +53,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('couontry_id') ? ' has-error' : '' }}">
-                            <label for="couontry_id" class="col-md-4 control-label">Country</label>
+                        <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+                            <label for="country_id" class="col-md-4 control-label">Country</label>
 
                             <div class="col-md-6">
-                                <select id="couontry_id" class="form-control" name="couontry_id" required autofocus>
+                                <select id="country_id" class="form-control" name="country_id" required autofocus>
                                     <option value="">Select</option>
-                                    <option value="admen">Admen</option>
-                                    <option value="customer">Customer</option>
-                                    <option value="moderator">Moderator</option>
+                                    @foreach($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                    @endforeach 
+
                                 </select>
 
-                                @if ($errors->has('couontry_id'))
+                                @if ($errors->has('country_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('couontry_id') }}</strong>
+                                        <strong>{{ $errors->first('country_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -76,7 +79,7 @@
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role" required autofocus>
                                     <option value="">Select</option>
-                                    <option value="admen">Admen</option>
+                                    <option value="admen">Admin</option>
                                     <option value="customer">Customer</option>
                                     <option value="moderator">Moderator</option>
                                 </select>
@@ -103,20 +106,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                            <label for="address" class="col-md-4 control-label">Address</label>
-
-                            <div class="col-md-6">
-                                <textarea class="form-control" name="address"></textarea>
-
-                                @if ($errors->has('address'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('secondary_contact') ? ' has-error' : '' }}">
                             <label for="secondary_contact" class="col-md-4 control-label">Secondary Contact</label>
 
@@ -131,8 +120,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('secondary_contact') ? ' has-error' : '' }}">
-                            <label for="secondary_contact" class="col-md-4 control-label">Aditional Notes</label>
+                        <div class="form-group{{ $errors->has('aditional_notes') ? ' has-error' : '' }}">
+                            <label for="aditional_notes" class="col-md-4 control-label">Aditional Notes</label>
 
                             <div class="col-md-6">
                                 <textarea class="form-control" name="aditional_notes"></textarea>

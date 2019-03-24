@@ -15,12 +15,11 @@
 </style>
 <div class="page-content">
 
-    @include('backend.partials._search')
     <!-- BEGIN CONTENT -->
     <div class="log-payment-index">
 
         <hr>
-        <h1 class="page-title" style="text-align: center;">Details</h1>
+        <h1 class="page-title" style="text-align: center; font-weight: bold;">Permit Request Details</h1>
         <hr>
 
         <div class="row">
