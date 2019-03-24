@@ -21,7 +21,7 @@
                             <th>Name</th>
                             <th>Country</th>
                             <th>City</th>
-                            <th>Address</th>                            
+                            <th>ICAO</th>                            
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -32,9 +32,9 @@
                             <tr>
                                 <td>{{++$i}}</td>
                                 <td>{{$result->name}}</td>
-                                <td>{{$result->country->name}}</td>
+                                <td>{{$result->country != '' ? $result->country->name:'N/A'}}</td>
                                 <td>{{$result->city}}</td>
-                                <td>{{$result->address}}</td>
+                                <td>{{$result->icao}}</td>
                                 <td>
                                     @if($result->created_by == Auth::user()->id)
                                     <a class="btn btn-success btn-xs" href="{{route('airports.edit', $result)}}"><i class="fa fa-edit"></i> Edit </a>

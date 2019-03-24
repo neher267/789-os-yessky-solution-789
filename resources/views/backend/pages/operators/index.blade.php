@@ -19,7 +19,10 @@
                         <tr>
                             <th>Sr.No</th>
                             <th>Name</th>
-                            <th>Address Line 1</th>
+                            <th>Country</th>
+                            <th>Address Line</th>
+                            <th>ICAO</th>
+                            <th>Callsign</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -30,7 +33,10 @@
                             <tr>
                                 <td>{{++$i}}</td>
                                 <td>{{$result->name}}</td>
+                                <td>{{$result->country != '' ? $result->country->name:'N/A'}}</td>
                                 <td>{{$result->address_line_1}}</td>
+                                <td>{{$result->icao}}</td>
+                                <td>{{$result->callsign}}</td>
                                 <td>
                                     @if($result->created_by == Auth::user()->id)
                                     <a class="btn btn-success btn-xs" href="{{route('operators.edit', $result)}}"><i class="fa fa-edit"></i> Edit </a>
@@ -47,6 +53,7 @@
                             </tr>
                             @endforeach
                     </tbody>
+                    
                 </table>
             </div>
 
