@@ -58,10 +58,12 @@
 
             @include('backend.partials._sidebar')
             <div class="page-content-wrapper">
-                @yield('content')''
+                @yield('content')
             </div>
         </div>
         @include('backend.partials._lisence-modal')
+
+
 
         <div class="page-footer">
             <div class="page-footer-inner">

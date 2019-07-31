@@ -73,6 +73,7 @@ class LandingRequestController extends Controller
 
         //$tran_id = rand(1,50);
         $request->session()->put('tran_id', $tran_id);
+        $request->session()->put('type', 'FlightRequest');
 
         $this->addAdditionalData($data->id, $request);
 

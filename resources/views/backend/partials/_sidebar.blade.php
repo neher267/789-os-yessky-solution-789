@@ -8,11 +8,18 @@
                     <span></span>
                 </div>
             </li>
-            <li class="nav-item active open">
+            <li class="nav-item">
                 <a href="{{url('dashboard')}}" class="nav-link">
                     <i class="fa fa-dashboard"></i>
                     <span class="title">Dashboard</span>
-                    <span class="selected"></span></a>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{url('dashboard\e-payment')}}" class="nav-link">
+                    <i class="fa fa-money"></i>
+                    <span class="title">E-Payment</span>
+                </a>
             </li>
 
             <?php $role =  Auth::user()->role; ?>

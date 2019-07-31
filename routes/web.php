@@ -22,6 +22,11 @@ Route::post('get-operators','AjaxController@get_operators');
 Route::post('get-airports','AjaxController@get_airports');
 
 
+// Route::group(['namespace'=>'Dashboard'], function(){
+// 	Route::get('e-payment', 'PaymentController@e_payment');
+// 	Route::post('e-payment', 'PaymentController@e_payment_store');
+// });
+
 
 Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['auth']], function() {
 	Route::get('/', 'HomeController@index');
@@ -53,6 +58,8 @@ Route::group(['prefix'=>'dashboard', 'namespace'=>'Dashboard', 'middleware'=>['a
 	//end training
 
 	Route::get('payment', 'PaymentController@create');
+	// Route::get('e-payment', 'PaymentController@e_payment');
+	// Route::post('e-payment', 'PaymentController@e_payment_store');
 });
 
 Route::group(['prefix'=>'dashboard', 'middleware'=>['auth']], function(){
